@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Vendor Admin {% endblock %}
+
+        {% block content %}
+            <div class="box" xmlns="http://www.w3.org/1999/html">
+                <h1 class="title "> Vendor Admin - <span class="is-uppercase"> {{ vendor.username }}</span></h1>
+
+                <a class="button is-danger is-uppercase" href="{% url 'vendor_logout' %}">Logout</a>
+            </div>
+
+        {% endblock %}
