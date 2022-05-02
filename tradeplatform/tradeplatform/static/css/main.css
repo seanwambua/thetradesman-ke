@@ -1,0 +1,151 @@
+@media screen and (min-width:860px) {
+	.display-4{
+		font-size: 54px;
+	}
+
+	h1{
+		font-size:1rem;
+	}
+
+	h2{
+		font-size: 42px;
+	}
+
+	h3{
+		font-size: 30px;
+	}
+
+	h4{
+		font-size: 20px;
+	}
+
+	h5{
+		font-size:16px ;
+	}
+
+	h6{
+		font-size: 14px;
+		font-weight:bolder;
+		color: brown;
+		position: relative;
+		text-align-last: center;
+		word-wrap: break-word;
+	}
+
+	p{
+		font-size: 14px;
+	}
+}
+@media screen and (max-width:860px) {
+	.display-4{
+		font-size: 8vw;
+	}
+
+	h1{
+		font-size: 2vw;
+	}
+
+	h2{
+		font-size: 2vw;
+	}
+	
+	h3{
+		font-size: 2vw;
+	}
+
+	h4{
+		font-size: 2vw;
+	}
+
+	h5{
+		font-size: 2vw;
+	}
+
+	 h6{
+		font-size: 2vw;
+		font-weight:bolder;
+		color: brown;
+		position: relative;
+		text-align-last: center;
+		word-wrap: break-word;
+	}
+	p{
+		font-size: 2vw;
+	}
+}
+h1{
+	font-size:1rem;
+}
+h2{
+	font-size: 42px;
+}
+h3{
+	font-size: 30px;
+}
+h4{
+	font-size: 20px;
+}
+h5{
+	font-size:16px ;
+}
+ h6{
+	font-size: 14px;
+	font-weight:bolder;
+	color: brown;
+	position: relative;
+	text-align-last: center;
+	word-wrap: break-word;
+}
+p{
+	font-size: 14px;
+}
+
+
+.navbar{
+	color: rosybrown;
+}
+#search-bar{
+	width: auto;
+}
+
+.card{	
+	color: black;
+	width:100%;
+	height:auto;
+	margin-bottom: 0%;
+	padding:0%;
+}
+
+.card-title{
+	font-size: 16px;
+}
+.card-text {
+	font-size: 14px;
+    word-wrap: break-word;
+}
+
+.col-lg-5{
+	padding-left: 10%;
+}
+
+.btn{
+	background-color:rosybrown;
+	color: whitesmoke;
+	outline: none;
+}
+
+.btn-primary{
+	outline:none;
+	
+}
+.btn-primary:hover{
+	background-color: Purple;
+	outline: none;
+}
+.row{
+	padding: 3%;
+}
+.sub-heading{
+	float:left;
+	position: relative;
+}
