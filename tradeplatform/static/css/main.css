@@ -75,18 +75,32 @@
 }
 h1{
 	font-size:1rem;
+
+	font-weight:bolder;
+	word-wrap: break-word;
+	text-transform: capitalize;
 }
 h2{
 	font-size: 42px;
+	font-weight: bolder;
+	color: black;
+	word-wrap: break-word;
+	text-transform: uppercase;
 }
 h3{
 	font-size: 30px;
+	font-weight:bolder;
+	word-wrap: break-word;
 }
 h4{
 	font-size: 20px;
+	font-weight:bolder;
+	word-wrap: break-word;
 }
 h5{
 	font-size:16px ;
+	font-weight: bolder;
+	word-wrap: break-word;
 }
  h6{
 	font-size: 14px;
@@ -96,8 +110,27 @@ h5{
 	text-align-last: center;
 	word-wrap: break-word;
 }
+
 p{
 	font-size: 14px;
+}
+
+th{
+	font-size: 14px;
+}
+
+td{
+	font-size: 14px;
+}
+
+table{
+	border-style: none;
+	text-decoration: none;
+}
+
+tr{
+	border: none;
+	text-decoration: none;
 }
 
 
@@ -149,3 +182,4 @@ p{
 	float:left;
 	position: relative;
 }
+

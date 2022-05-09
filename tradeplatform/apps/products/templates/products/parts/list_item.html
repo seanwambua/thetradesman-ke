@@ -1,0 +1,25 @@
+  <div class="column is-3 product-list-item">
+
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="{{product.get_thumbnail}}" alt="{{product.title}}">
+                </figure>
+            </div>
+
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-6">{{product.title}}</p>
+                        <p class="subtitle is-6">Ksh. {{product.price}}</p>
+                        <a class="button is-dark" href="{% url 'product' product.category.slug product.slug %}">View</a>
+                    </div>
+                </div>
+            <div class="content">
+                <hr>
+                <p>Sold By: <a><span class="is-lowercase">{{product.vendor}}</span></a>.</p>
+            </div>
+
+        </div>
+    </div>
+</div>

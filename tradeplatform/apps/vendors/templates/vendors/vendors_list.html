@@ -10,12 +10,10 @@
                         <h3 style="color: black;">Newest Posts</h3>
                     </div>
 
-                    {% for product in newest_products %}
-                          {% include 'products/parts/list_item.html' %}
+                    {% for vendor in vendors %}
+                          {% include 'vendors/parts/vendor_profile.html' %}
                     {% endfor %}
 
                 </div>
             {% endblock %}
 
-
-            

@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
         <script src="{% static 'js/main.js' %}"></script>
@@ -13,26 +14,48 @@
     <body>
         <nav class="navbar is-dark is-uppercase">
             <div class="navbar-brand">
-                <a href="{% url 'homepage' %}" class="navbar-item"><strong>Tradesman</strong></a>
+                <a href="{% url 'homepage' %}" class="navbar-item"><h1 class="is-uppercase">Tradesman</h1></a>
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="main-navbar">
-                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true">Links</span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
             </div>
 
             <div class="navbar-menu" id="main-navbar">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="">About</a> 
+                     <a class="navbar-item" href="">Store</a>                    
+                </div>
                 <div class="navbar-end">
-                    <a class="navbar-item" href="{% url 'contact' %}">Contact</a>
-                    <a class="navbar-item" href="#">Cart</a>
+
+
                     {% if request.user.is_authenticated %}
-                        <a class="navbar-item is-danger" href="{% url 'vendor_logout' %}">Logout</a>
+                        <a class="navbar-item" href="{% url 'vendor_admin' %}">Vendor Admin</a>
                     {% else %}
-                        <a class="navbar-item" href="{% url 'vendor_login' %}">Login</a>
+                        <a class="navbar-item" href="#">Cart</a>
                     {% endif %}
+
+
+                    {% if request.user.is_authenticated %}
+                        <a class="navbar-item" href="{% url 'contact' %}">Contact Support</a>
+                    {% else %}
+                        <a class="navbar-item" href="{% url 'contact' %}">Contact</a>
+                    {% endif %}
+
+
+                    {% if request.user.is_authenticated %}
+                        <a class="navbar-item is-danger" href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                        <a class="navbar-item" href="{% url 'login' %}">Login</a>
+                    {% endif %}
+
+
                 </div>
             </div>
         </nav>
+
+
 
         <section class="section">
             <div class="container">
