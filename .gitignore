@@ -2,4 +2,5 @@
 .gitignore
 .github
 .idea
+db.sqlite3
 venv
