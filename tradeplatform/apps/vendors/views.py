@@ -21,7 +21,7 @@ class VendorLoginView(LoginView):
             return "A user is already signed in."
 
 
-def become_vendor(request):
+def sign_up(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
