@@ -1,79 +1,83 @@
+<html>  
+{# Load the tag library #}
+{% load bootstrap5 %}
 {% load static %}
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}{% endblock %}</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-        <script src="{% static 'js/main.js' %}"></script>
-    </head>
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<head>
+  <title>Tradesman KE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+  <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+</head>
 
-    <body>
-        <nav class="navbar is-dark is-uppercase">
-            <div class="navbar-brand">
-                <a href="{% url 'homepage' %}" class="navbar-item"><h1 class="is-uppercase">Tradesman</h1></a>
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="main-navbar">
-                    <span aria-hidden="true">Links</span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg">
+      <!-- App Title-->
+      <a class="navbar-brand m-2" href="{% url 'homepage' %}"><h2> Tradesman KE</h2></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">
+              <!-- <img src="{% static '/images/1 (5).png' %}">Logo</img>-->
+          </span>
+      </button>
+  
 
-            <div class="navbar-menu" id="main-navbar">
-                <div class="navbar-start">
-                    <a class="navbar-item" href="">About</a> 
-                     <a class="navbar-item" href="">Store</a>                    
-                </div>
-                <div class="navbar-end">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+        </ul>
 
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            
+          </form>
+          <a class="btn btn-outline-success m-4 " type="submit">Search</a>
 
-                    {% if request.user.is_authenticated %}
-                        <a class="navbar-item" href="{% url 'vendor_admin' %}">Vendor Admin</a>
-                    {% else %}
-                        <a class="navbar-item" href="#">Cart</a>
-                    {% endif %}
+          <a class="btn btn-primary my-2 my-sm-0" type="submit" style="margin-left:5%;" href="{% url 'login'%}">Login</a>
+          </div>
 
+      </div>
+  </nav>
+  {# Display django.contrib.messages as Bootstrap alerts #}
+  {% bootstrap_messages %}    
 
-                    {% if request.user.is_authenticated %}
-                        <a class="navbar-item" href="{% url 'contact' %}">Contact Support</a>
-                    {% else %}
-                        <a class="navbar-item" href="{% url 'contact' %}">Contact</a>
-                    {% endif %}
+  <!-- Django Code -->
+  <div class="container">
+      {% block content %}
+      
+      {% endblock content %}
+  </div>   
 
-
-                    {% if request.user.is_authenticated %}
-                        <a class="navbar-item is-danger" href="{% url 'logout' %}">Logout</a>
-                    {% else %}
-                        <a class="navbar-item" href="{% url 'login' %}">Login</a>
-                    {% endif %}
-
-
-                </div>
-            </div>
-        </nav>
+ 
+</body>
 
 
-
-        <section class="section">
-            <div class="container">
-                {% block content %}
-                    { #Django Template code gets rendered here }
-                {% endblock %}
-            </div>
-        </section>
-
-        <footer>
-            <div class="container">
-                <h3 class="is-size-4 mb-4">Tradesman Shop</h3>
-                {% if request.user.is_authenticated %}
-                    <a href="{% url 'vendor_admin' %}">Vendor Admin</a>
-                {% else %}
-                    <a href="{% url 'sign_up' %}">Sign Up as a Vendor</a>
-                {% endif %}
-            </div>
-        </footer>
-    </body>
-</html>
+<footer class="page-footer font-small special-color-dark pt-4 ">
+  <div class="container">    
+      <div class="row">    
+          <div class="col-md-6 mb-4"> 
+          <form class="form-inline">
+              <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+              aria-label="Search">
+              <i class="fas fa-search" aria-hidden="true"></i>
+          </form>
+          </div>
+          <div class="col-md-6 mb-4">    
+          <form class="input-group">
+              <input type="text" class="form-control form-control-sm" placeholder="Your email"
+              aria-label="Your email" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+              <button class="btn btn-sm btn-outline-white my-0" type="button">Newsletter Sign up</button>
+              </div>
+          </form>    
+          </div> 
+      </div>   
+  </div>
+  <div class="footer-copyright text-center py-3">© 2022 Copyright:
+      <a href="{% url 'homepage' %}"> Tradesman KE</a>
+  </div>
+</footer>

@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 
 def homepage(request):
-    newest_products = Products.objects.all()[0:4]
+    newest_products = Products.objects.all()
     return render(request, 'core/home.html', {'newest_products': newest_products})
 
 

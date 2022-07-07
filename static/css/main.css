@@ -182,4 +182,8 @@ tr{
 	float:left;
 	position: relative;
 }
+.img{
+	height: fit-content;
+	width: 200px;
+}
 

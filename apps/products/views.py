@@ -7,6 +7,7 @@ from .models import Products, Category
 
 class ProductDetailView(DetailView):
     model = Products
-    context_object_name = 'products'
+    context_object_name = 'product'
     template_name = 'products/product.html'
+   
     
