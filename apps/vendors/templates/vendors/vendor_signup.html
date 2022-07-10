@@ -3,21 +3,25 @@
 {% block title %} Become Vendor {% endblock %}
 
         {% block content %}
-            <h1> Become Vendor </h1>
+        <div class="card shadow p-2 mb-4 bg-white rounded" >
+            <div class="card-title">	
+                <h1> Become Vendor </h1>
+            </div>
 
-            <form method="post" action="">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <div class="field">
-                    <div class="control">
-                        <button class="button is-dark is-uppercase">Sign Up</button>
+            <div class="card-body">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="field">
+                        <div class="control">
+                            <button class="btn btn-success">Sign Up</button>
+                        </div>
                     </div>
-                </div>
-
-                <hr>
-
-                <h2 class="subtitle"> Already have an account?</h2>
-                <a href="{% url 'login' %}">Login</a>
-
-            </form>
+                </form>
+            </div>
+            
+            <div class="card-footer">
+                <h6 class="subtitle"> Already have an account?</h6>
+                <a class="btn btn-outline-dark" href="{% url 'login' %}">Login</a>
+            </div>
         {% endblock %}

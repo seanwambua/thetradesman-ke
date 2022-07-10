@@ -5,32 +5,83 @@
 {% endblock %}
 
 {% block content %}
+	<div class="flex d.flex">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="card shadow p-4 mb-4 bg-white rounded" >
 
-	{% if product.image %}
-		<figure class="image is-4by3 mb-6">
-			<img src="{{product.image.url}}">
-		</figure>
-	{% endif %}
-
-	<h1 class="title">{{ product.title}} Ksh.{{product.price }}</h1>
-
-	<p class="mb-6"><span class="tag is-dark">{{product.vendor.name}}</span></p>
-
-	<p>{{ product.description }} </p>
-
-	{% if similar_product %}
-		<hr>
-
-		<div class="columns is-multilne">
-
-			<div class="column is-12">
-				<h2 class="subtitle">Similar Products</h2>
+					<div class="card-image" style="float:left" >
+						<figure>
+							{% if product.image %}
+								<img  class="img-fluid img-thumbnail" src="{{product.image.url}}" style="width:40rem;">		
+							{% endif %}
+						</figure>
+					</div>
+				</div>
 			</div>
 
-			{% for product in similar_product %}
-				{% include 'products/parts/list_item.html' %}
-			{% endfor %}
+			<div class="col-lg-6">
+				<div class="card shadow p-4 mb-4 bg-white rounded" >	
+					<div stye="float:right">
+						<div class="card-header">
+							<h4>{{ product.title}} </h4>
+						</div>
+
+						<div class="card-body">
+							
+							<p class="mb-6">Price: Ksh. {{product.price}}</p>
+							<p class="mb-6">Package Description:{{product.description}}</p>
+
+							<a  class="btn btn-primary" href="{% url 'cart' %}">Add to Cart</a>
+
+
+
+
+							<p>{{ product.description }} </p>
+						</div>
+
+						<div class="card-footer">
+							Merchant: {{product.vendor.name}}
+							<span style="float:right">Category: {{product.category}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-lg-12">
+				<div class="card shadow p-4 mb-4 bg-white rounded" >	
+					<div stye="float:right">
+						<div class="card-header">
+							<h4>Merchant Terms</h4>
+						</div>
+	
+						<div class="card-body">
+							<ol>
+								<li class="mb-6">Delivery Period: 24Hrs</li>
+							</ol>
+							<hr>
+							<h6 class="mb-6">Payment Terms</h6>
+							<ul>
+								<li class="mb-6">75% Upfront</li>
+								<li class="mb-6">25% On Completion</li>
+							</ul>
+						</div>
+	
+						<div class="card-footer">
+							<p>This {{product.category}} is covered by the following Tradesman Policies; </p>
+							<a href="#"> Payment Protection Policy</a><br>
+							<a href="#"> Data Protection Policy</a>
+
+						</div>
+					</div>
+				</div>
+	
+
+			</div>
 		</div>
-	{% endif %}
+	</div>
+
+	
 {% endblock %}
 

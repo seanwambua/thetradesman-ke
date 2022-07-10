@@ -4,16 +4,18 @@
 
             {% block content %}
 
-                <div class="columns is-multiline mb-6">
+            <h4 class="m-1"> Availabe Stores: </h4><br>
 
-                    <div class="column is-12 has-text-centered mt-6 mb-6">
-                        <h3 style="color: black;">Newest Posts</h3>
-                    </div>
-
+            <div class="flex d-flex">
+                <div class="row">
                     {% for vendor in vendors %}
-                          {% include 'vendors/parts/vendor_profile.html' %}
+                    <div class="col-lg-4">
+                          {% include 'vendors/parts/list_vendor.html' %}
                     {% endfor %}
-
+                    </div>
                 </div>
+            </div>
             {% endblock %}
 
+
+            

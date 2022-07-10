@@ -10,3 +10,6 @@ def homepage(request):
 
 def contact(request):
     return render(request, 'core/contact.html')
+
+def cart(request):
+    return render(request, 'core/cart.html')
