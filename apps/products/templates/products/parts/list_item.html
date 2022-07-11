@@ -1,7 +1,6 @@
   <div class="product-list-item">
         <div class="card shadow p-2 mb-3 bg-white rounded" >	
-            <div class="card-image" >
-                
+            <div class="card-image" >                
                 <figure class="">
                     <img  class="rounded mx-auto d-block img-thumbnail" src="{{product.get_thumbnail}}" alt="{{product.title}}" style="width:auto">
                 </figure>
@@ -11,13 +10,10 @@
 
             <div class="card-body">
                 
-                <a   class="btn btn-outline-dark" style="float:left" href="{% url 'product' product.category.slug product.pk %}">View Item</a>
-                <a  class="btn btn-primary" style="float:right" href="{% url 'cart' %}">Add to Cart</a>
+                <a   class="btn btn-primary" style="float:left" href="{% url 'product' product.category.slug product.pk %}">View Item</a>
+                <a  class="btn btn-outline-dark" style="float:right" href="{% url 'cart' %}">Add to Cart</a>
             </div>
-            <div class="card-footer m-1">
-                <span  style="float:justify"class="card-text">Merchant: <a href="#">{{product.vendor}}</a></span>
-                <a style="float:right" href="#">#{{product.category}}</a>
-            </div>
+            
 
         </div>        
     </div>

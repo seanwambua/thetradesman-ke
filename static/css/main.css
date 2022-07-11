@@ -26,9 +26,7 @@
 	h6{
 		font-size: 14px;
 		font-weight:bolder;
-		color: brown;
 		position: relative;
-		text-align-last: center;
 		word-wrap: break-word;
 	}
 
@@ -64,7 +62,6 @@
 	 h6{
 		font-size: 2vw;
 		font-weight:bolder;
-		color: brown;
 		position: relative;
 		text-align-last: center;
 		word-wrap: break-word;
@@ -73,117 +70,3 @@
 		font-size: 2vw;
 	}
 }
-h1{
-	font-size:1rem;
-
-	font-weight:bolder;
-	word-wrap: break-word;
-	text-transform: capitalize;
-}
-h2{
-	font-size: 42px;
-	font-weight: bolder;
-	color: black;
-	word-wrap: break-word;
-	text-transform: uppercase;
-}
-h3{
-	font-size: 30px;
-	font-weight:bolder;
-	word-wrap: break-word;
-}
-h4{
-	font-size: 20px;
-	font-weight:bolder;
-	word-wrap: break-word;
-}
-h5{
-	font-size:16px ;
-	font-weight: bolder;
-	word-wrap: break-word;
-}
- h6{
-	font-size: 14px;
-	font-weight:bolder;
-	color: brown;
-	position: relative;
-	text-align-last: center;
-	word-wrap: break-word;
-}
-
-p{
-	font-size: 14px;
-}
-
-th{
-	font-size: 14px;
-}
-
-td{
-	font-size: 14px;
-}
-
-table{
-	border-style: none;
-	text-decoration: none;
-}
-
-tr{
-	border: none;
-	text-decoration: none;
-}
-
-
-.navbar{
-	color: rosybrown;
-}
-#search-bar{
-	width: auto;
-}
-
-.card{	
-	color: black;
-	width:100%;
-	height:auto;
-	margin-bottom: 0%;
-	padding:0%;
-}
-
-.card-title{
-	font-size: 16px;
-}
-.card-text {
-	font-size: 14px;
-    word-wrap: break-word;
-}
-
-.col-lg-5{
-	padding-left: 10%;
-}
-
-.btn{
-	background-color:rosybrown;
-	color: whitesmoke;
-	outline: none;
-}
-
-.btn-primary{
-	outline:none;
-	
-}
-.btn-primary:hover{
-	background-color: Purple;
-	outline: none;
-}
-.row{
-	padding: 3%;
-}
-.sub-heading{
-	float:left;
-	position: relative;
-}
-.img{
-	height: fit-content;
-	width: 200px;
-}
-

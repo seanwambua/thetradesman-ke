@@ -58,15 +58,15 @@
         </ul>
 
           <form class="form-inline my-2 my-lg-0">
-            <input class="mr-sm-2" type="text" />
-            <button class="btn" type="submit">Search</button>            
+            <input class="mr-sm-2" type="text" placehoder="Search"/>
+            <button class="btn btn-outline-dark" type="submit">Search</button>            
           </form>
 
           
           {% if request.user.is_superuser %}
             <a class="btn btn-outline-dark my-sm-0" type="submit" style="margin-left:5%;" href="{% url 'vendor_admin' %}">Administration</a>
           {% else %}
-          <a class="btn btn-light m-2 my-sm-0" type="submit" style="margin-left:5%;" href="{% url 'cart' %}">Cart<img src="https://img.icons8.com/ios-filled/50/000000/shopping-cart.png"/></a> 
+          <a class="btn bg-white m-2 my-sm-0" type="submit" style="margin-left:5%;" href="{% url 'cart' %}">Cart <img src="https://img.icons8.com/material/24/000000/shopping-cart--v1.png"/></a> 
           {% endif %}
 
 
