@@ -1,4 +1,4 @@
-
+{% extends 'core/base.html' %}
 
 {% block title %}
 	{{ product.title }}
@@ -8,7 +8,7 @@
 	<div class="flex d.flex">
 		<div class="row">
 			
-			{% if product.category.slug == "service" %}
+			{% if product.category.slug =="service" %}
 				{% include 'vendors/parts/service_detail.html' %}
 			{% else %}
 				{% include 'products/parts/product_detail.html' %}
