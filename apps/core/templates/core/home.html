@@ -7,7 +7,23 @@
             <div class="flex d-flex">
                 <div class="row">
                     {% for product in newest_products %}
-                    <div class="col-lg-12">
+                    <div class="col-lg-4">
+                          {% include 'products/parts/list_item.html' %}
+                    {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="row">
+                    {% for product in latest_services %}
+                    <div class="col-lg-4">
+                          {% include 'products/parts/list_item.html' %}
+                    {% endfor %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    {% for product in latest_ventures %}
+                    <div class="col-lg-4">
                           {% include 'products/parts/list_item.html' %}
                     {% endfor %}
                     </div>
