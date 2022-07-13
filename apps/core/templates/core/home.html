@@ -5,22 +5,30 @@
             {% block content %}
             <div class="flex">
                 <div class="row">
-                    <h4>Newest Products</h4>
-                    {% for product in newest_products %}
-                        <div class="col-lg-5">
-                          {% include 'products/parts/list_item.html' %}
-                        </div>
-                    {% endfor %}                    
+                    {% if not latest_services%}
+                
+                    {% else %}
+                        <h4>Newest Products</h4>
+                        {% for product in newest_products %}
+                            <div class="col-lg-5">
+                            {% include 'products/parts/list_item.html' %}
+                            </div>
+                        {% endfor %}   
+                    {% endif %}                 
                 </div>
                 
-                <div class="row">
-                    <h5>Latest Services</h5>
-                    {% for product in latest_services %}
-                    <div class="col-lg-4">
-                        {% include 'products/parts/list_item.html' %}
+                {% if not latest_services%}
+
+                {% else %}
+                    <div class="row">
+                        <h5>Latest Services</h5>
+                        {% for product in latest_services %}
+                        <div class="col-lg-4">
+                            {% include 'products/parts/list_item.html' %}
+                        </div>
+                        {% endfor %}                    
                     </div>
-                    {% endfor %}                    
-                </div>
+                {% endif %}
 
                 
                 {% if not latest_ventures%}
