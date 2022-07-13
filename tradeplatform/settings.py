@@ -68,15 +68,12 @@ WSGI_APPLICATION = 'tradeplatform.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycog2',
+        'ENGINE': 'django.db.backends.postgresql',
         'HOST': config ('DB_HOST'),
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
         'PORT': config('DB_PORT'),
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
     }
 }
 
@@ -110,5 +107,4 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
