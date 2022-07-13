@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'tradeplatform.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': '127.0.0.1',
+        'HOST': '105.160.35.163',
         'NAME': 'tradesman',
         'USER': 'developer',
         'PASSWORD': '9ENPn3-u5GMz8AtS',
