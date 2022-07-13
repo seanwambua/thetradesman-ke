@@ -8,7 +8,7 @@
 	}
 
 	h2{
-		font-size: 42px;
+		font-size: 40px;
 	}
 
 	h3{
@@ -31,7 +31,11 @@
 	}
 
 	p{
-		font-size: 14px;
+		font-size: 16px;
+	}
+
+	a{
+		font-size: 16px;
 	}
 }
 @media screen and (max-width:860px) {

@@ -7,6 +7,7 @@ from django.utils.text import slugify
 
 from .forms import ProductsForm, CustomUserCreationForm
 from .models import Vendor
+from django.core.paginator import Paginator
 
 
 class VendorLogoutView(LogoutView):
@@ -23,7 +24,7 @@ class VendorLoginView(LoginView):
 
 def sign_up(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST or None)
         if form.is_valid():
             user = form.save()
             login(request, user)
@@ -58,6 +59,7 @@ def add_to_catalog(request):
 
 class VendorListView(ListView):
     model = Vendor
+    paginate_by: 2
     context_object_name = 'vendors'
     template_name = 'vendors/vendors_list.html'
 

@@ -11,6 +11,6 @@ urlpatterns = [
     path('Sign Up', views.sign_up, name="sign_up"),
 
     # Administration
-    path('User Administration', views.vendor_admin, name="vendor_admin"),
+    path('Administration', views.vendor_admin, name="vendor_admin"),
     path('Update Catalog', views.add_to_catalog, name="add_to_catalog"),
 ]

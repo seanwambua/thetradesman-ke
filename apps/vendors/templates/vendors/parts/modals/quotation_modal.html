@@ -1,0 +1,44 @@
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Request Quotation</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="/action_page.php" style="text-align:center">
+            <div class="form-floating mb-3 mt-3" style="text-align:center">
+              <input type="text" class="form-control" id="name">
+              <label for="name">Please enter your name:</label>
+            </div>
+            <div class="form-floating mb-3 mt-3" style="text-align:center">
+              <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+              <label for="email">Please enter your email adrress:</label>
+            </div>
+            <div class="form-floating mt-3 mb-3" style="text-align:center">
+              <input type="text" class="form-control" id="description">
+              <label for="description">Enter a brief job description:</label>
+            </div>
+            <div class="form-floating mt-3 mb-3" style="text-align:center">
+              <input type="text" class="form-control" id="completiontime">
+              <label for="completiontime">What is your expected turnaround time?</label>
+            </div>
+            <button type="submit" class="btn btn-dark">Request Quotation</button>
+          </form>
+          
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

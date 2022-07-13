@@ -6,6 +6,7 @@
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
+
 <head>
   <title>Tradesman KE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
@@ -17,7 +18,7 @@
   <!-- Navbar -->
   <nav class="m-2 navbar navbar-expand-lg navbar-light bg">
       <!-- App Title-->
-      <a class="p-2 navbar-brand" href="{% url 'homepage' %}"><h3> Tradesman KE</h3></a>
+      <a class="p-2 navbar-brand" href="{% url 'homepage' %}"><h2> Tradesman KE</h2></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon">
             <img src="https://img.icons8.com/material/24/FFFFFF/shopping-cart--v1.png"/>
@@ -74,14 +75,15 @@
             <a class="btn btn-warning m-2 my-sm-0" style="float:right" type="submit" style="margin-left:5%;" href="{% url 'logout' %}">Logout</a>
           {% else %}
             <a class="btn btn-primary m-2 my-sm-0" style="float:right" type="submit" style="margin-left:5%;" href="{% url 'login'%}">Login</a>
+            <a  class="btn btn-outline-dark"  data-bs-toggle="modal" data-bs-target="#loginModal" style="float:right" href="{% url 'login' %}">Login</a></p>
             <a class="btn btn-outline-success m-2 my-sm-0" style="float:right" type="submit" style="margin-left:5%;" href="{% url 'sign_up'%}">Sign Up</a>
           {% endif %}
         </div>
-
+        {% include 'vendors/parts/modals/login.html' %}
       </div>
   </nav>
   {# Display django.contrib.messages as Bootstrap alerts #}
-  {% bootstrap_messages %}    
+  {% bootstrap_messages %}
 
   <!-- Django Code -->
   <div class="container">

@@ -1,24 +1,16 @@
 {% extends 'core/base.html' %}
 
-{% block title %} Become Vendor {% endblock %}
-
-        {% block content %}
-        <div class="card shadow p-2 mb-4 bg-white rounded" >
-            <div class="card-title">	
-                <h1> Become Vendor </h1>
+{% block title %} User SignUp {% endblock %}
+{% block content %}
+<div class="flex mb-6">
+    <div class="row">
+        <div class="col-lg-auto" style="margin-left:20rem">
+        <div class="card shadow p-4 mb-6 bg-white rounded" >
+            <div class="card-header bg-white">	
+                <h3> Become Vendor </h3>
             </div>
 
-            <div class="card-body">
-                <form method="post" action="">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <div class="field">
-                        <div class="control">
-                            <button class="btn btn-success">Sign Up</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+            {% include 'vendors/parts/form-card.html' %}
             
             <div class="card-footer">
                 <h6 class="subtitle"> Already have an account?</h6>

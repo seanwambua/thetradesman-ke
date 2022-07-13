@@ -2,17 +2,12 @@ from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
-
 from apps.products.models import Products
-
-
-
 
 class ProductsForm(ModelForm):
     class Meta:
         model = Products
         fields = ['category', 'image', 'title', 'description', 'price']
-
 
 class CustomUserCreationForm(forms.Form):
     username = forms.CharField(label='Enter Username', min_length=4, max_length=150)
