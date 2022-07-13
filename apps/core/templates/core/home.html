@@ -3,30 +3,39 @@
     {% block title %} Welcome | Tradesman {% endblock %}
 
             {% block content %}
-
-            <div class="flex d-flex">
+            <div class="flex">
                 <div class="row">
+                    <h4>Newest Products</h4>
                     {% for product in newest_products %}
-                    <div class="col-lg-4">
+                        <div class="col-lg-5">
                           {% include 'products/parts/list_item.html' %}
-                    {% endfor %}
-                    </div>
+                        </div>
+                    {% endfor %}                    
                 </div>
                 
                 <div class="row">
+                    <h5>Latest Services</h5>
                     {% for product in latest_services %}
                     <div class="col-lg-4">
-                          {% include 'products/parts/list_item.html' %}
-                    {% endfor %}
+                        {% include 'products/parts/list_item.html' %}
                     </div>
+                    {% endfor %}                    
                 </div>
 
-                <div class="row">
-                    {% for product in latest_ventures %}
-                    <div class="col-lg-4">
-                          {% include 'products/parts/list_item.html' %}
-                    {% endfor %}
-                    </div>
+                
+                {% if not latest_ventures%}
+                    <p>No current listings</p>
+                {% else %}
+                    <div class="row">                
+                        <h5>Newest Ventures</h5>
+                        {% for product in latest_ventures %}
+                        <div class="col-lg-6">
+                            {% include 'products/parts/list_item.html' %}
+                        </div>
+                        {% endfor %}
+                    </div>                    
+                {% endif %}
+                    
                 </div>
             </div>
             {% endblock %}

@@ -15,7 +15,7 @@
                     <span ><a   class="btn btn-dark mx-auto d-block"  style=" font-size:14px" href="{% url 'product' product.category.slug product.pk %}">View {{product.category}} package</a><span>
                 {% else %}
                 <p>
-                    <a class="btn btn-outline-dark" style="float:left; font-size:14px" href="{% url 'product' product.category.slug product.pk %}">View {{product.category}}</a>
+                    <a class="btn btn-outline-dark" style="float:left; font-size:14px" href="{% url 'product'  product.category.slug product.pk %}">View {{product.category}}</a>
                     <a class="btn btn-primary" style="float:right; font-size:14px" href="{% url 'cart' %}">Add to Cart</a>
                 </p>
                 {% endif%}
@@ -23,4 +23,4 @@
             
 
         </div>        
-    </div>
+    

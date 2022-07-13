@@ -7,7 +7,13 @@ from apps.products.models import Products
 class ProductsForm(ModelForm):
     class Meta:
         model = Products
-        fields = ['category', 'image', 'title', 'description', 'price']
+        fields = [
+            'category',
+            'image',
+            'title',
+            'description',
+            'price'
+        ]
 
 class CustomUserCreationForm(forms.Form):
     username = forms.CharField(label='Enter Username', min_length=4, max_length=150)
