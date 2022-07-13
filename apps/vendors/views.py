@@ -44,7 +44,7 @@ def vendor_admin(request):
 
 
 @login_required
-def add_to_catalog(request):
+def catalog_update(request):
     if request.method == 'POST':
         form = ProductsForm(request.POST, request.FILES)
         if form.is_valid():
@@ -55,7 +55,7 @@ def add_to_catalog(request):
             return redirect('vendor_admin')
     else:
         form = ProductsForm()
-    return render(request, 'vendors/add_to_catalog', {'form': form})
+    return render(request, 'vendors/catalogUpdate.html', {'form': form})
 
 class VendorListView(ListView):
     model = Vendor
