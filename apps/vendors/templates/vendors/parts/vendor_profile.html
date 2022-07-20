@@ -15,9 +15,11 @@
       
       <div class="card-footer bg-white" style="font-size:14px">
         <a>@{{vendor.name}}</a>.
-        <a href="#">#tradesman</a> <a href="#">#vendor</a>
+        <a href="#">#tradesman</a> <a href="#">#store</a>
         <br>
-        <date date="2016-1-1">Joined: {{vendor.date_time_created}}</date>
+        {% if user.is_superuser%}
+            <date date="2016-1-1">Joined: {{vendor.date_time_created}}</date>
+        {% endif %}
       </div>
   </div>
 

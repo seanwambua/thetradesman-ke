@@ -12,11 +12,11 @@
             <div class="card-body">
                 
                 {% if product.category.slug == "service"%}
-                    <span ><a   class="btn btn-dark mx-auto d-block"  style=" font-size:14px" href="{% url 'product' product.category.slug product.pk %}">View {{product.category}} package</a><span>
+                    <a   class="btn btn-dark mx-auto d-block"  style=" font-size:14px" href="{% url 'product' product.category.slug product.pk %}">View {{product.category}} package</a>
                 {% else %}
                 <p>
                     <a class="btn btn-outline-dark" style="float:left; font-size:14px" href="{% url 'product'  product.category.slug product.pk %}">View {{product.category}}</a>
-                    <a class="btn btn-primary" style="float:right; font-size:14px" href="{% url 'cart' %}">Add to Cart</a>
+                    <button data-product={{product.id}} data-action="add" class="btn btn-primary update-class" style="float:right; font-size:14px">Add to Cart</button>
                 </p>
                 {% endif%}
             </div>

@@ -2,7 +2,7 @@ from pathlib import os, Path
 from re import S
 from decouple import config
 
-config.encoding= config('ENCODING')
+config.encoding = config('ENCODING')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -11,13 +11,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = True
+DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'vendor_admin'
-LOGOUT_REDIRECT_URL = 'homepage'
+LOGIN_URL = config('LOGIN_URL')
+LOGIN_REDIRECT_URL = config('LOGIN_REDIRECT_URL')
+LOGOUT_REDIRECT_URL = config('LOGOUT_REDIRECT_URL')
 
 INSTALLED_APPS = [
 

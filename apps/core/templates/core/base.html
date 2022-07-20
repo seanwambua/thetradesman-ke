@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>  
 {# Load the tag library #}
 {% load bootstrap5 %}
@@ -75,7 +76,6 @@
             <a class="btn btn-warning m-2 my-sm-0" style="float:right" type="submit" style="margin-left:5%;" href="{% url 'logout' %}">Logout</a>
           {% else %}
             <a class="btn btn-primary m-2 my-sm-0" style="float:right" type="submit" style="margin-left:5%;" href="{% url 'login'%}">Login</a>
-            <a  class="btn btn-outline-dark"  data-bs-toggle="modal" data-bs-target="#loginModal" style="float:right" href="{% url 'login' %}">Login</a></p>
             <a class="btn btn-outline-success m-2 my-sm-0" style="float:right" type="submit" style="margin-left:5%;" href="{% url 'sign_up'%}">Sign Up</a>
           {% endif %}
         </div>

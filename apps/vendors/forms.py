@@ -50,8 +50,8 @@ class CustomUserCreationForm(forms.Form):
     def save(self):
         user = User.objects.create_user(
             self.cleaned_data['username'],
-            self.first_name,
-            self.last_name,
+            self.first_name['first_name'],
+            self.last_name['last_name'],
             self.cleaned_data['email'],
             self.cleaned_data['password1'],
             self.introduction,
