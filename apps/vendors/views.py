@@ -8,7 +8,10 @@ from django.utils.text import slugify
 from .forms import ProductsForm, CustomUserCreationForm
 from .models import Vendor
 from django.core.paginator import Paginator
+from django.contrib import messages
 
+class SuccessMessageMixin:
+    success_message = ''
 
 class VendorLogoutView(LogoutView):
     template_name = 'vendors/vendor_logout.html'
@@ -16,6 +19,7 @@ class VendorLogoutView(LogoutView):
 
 class VendorLoginView(LoginView):
     template_name = 'vendors/vendor_login.html'
+    success_message = "Welcome back, you've succesfully logged in"
 
     def authenticated(self):
         if self.is_authenticated:
@@ -24,15 +28,17 @@ class VendorLoginView(LoginView):
 
 def sign_up(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST or None)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            vendor = Vendor.objects.create(name=user.username, first_name=user.first_name, last_name=user.last_name,
+            Vendor.objects.create(name=user.username, first_name=user.first_name, last_name=user.last_name,
                                            email=user.email, created_by=user)
-            return redirect('vendor_admin')
+            return redirect('homepage')
+            
     else:
         form = CustomUserCreationForm()
+        messages.warning(request, "Sign up failed, please try again")
     return render(request, 'vendors/vendor_signup.html', {'form': form})
 
 

@@ -1,8 +1,10 @@
+from email import message
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 from apps.products.models import Products
+from django.contrib import messages
 
 class ProductsForm(ModelForm):
     class Meta:
@@ -16,44 +18,44 @@ class ProductsForm(ModelForm):
         ]
 
 class CustomUserCreationForm(forms.Form):
-    username = forms.CharField(label='Enter Username', min_length=4, max_length=150)
-    first_name = forms.CharField(label='Enter First name:')
-    last_name = forms.CharField(label='Enter Last name:')
-    email = forms.EmailField(label='Enter Email')
-    introduction = forms.CharField(label='Please introduce yourself: (This intro will be seen by your clients)')
-    password1 = forms.CharField(label='Enter password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
+    first_name = forms.CharField(label='Please enter your first name:',min_length=2, max_length=150)
+    last_name = forms.CharField(label='Please enter your last name:',min_length=2, max_length=150)
+    email = forms.EmailField(label='Please enter your official email')
+    username = forms.CharField(label='Please enter your Business Name', min_length=4, max_length=150)
+    new_password = forms.CharField(label='Enter password', widget=forms.PasswordInput)
+    confirmation_password = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
 
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
         requested_name = User.objects.filter(username=username)
-        if requested_name.count():
+        if requested_name.exists():
             raise ValidationError("Username already exists")
         return username
 
     def clean_email(self):
         email = self.cleaned_data['email'].lower()
-        r = User.objects.filter(email=email)
-        if r.count():
-            raise ValidationError("Email already exists")
+        email_user = User.objects.filter(email=email)
+        if email_user.count():
+            messages.error(self,"Invalid Email")
+            raise ValidationError("This email address is already linked to another account. Please try a different email.")
+            
         return email
 
     def clean_password2(self):
-        password1 = self.cleaned_data.get('password1')
-        password2 = self.cleaned_data.get('password2')
+        new_password = self.cleaned_data.get('new_password')
+        confirmation_password = self.cleaned_data.get('confirmation_password')
 
-        if password1 and password2 and password1 != password2:
-            raise ValidationError("Password don't match")
+        if new_password and confirmation_password and new_password != confirmation_password:
+            raise ValidationError("Passwords don't match. Please try again.")
 
-        return password2
+        return confirmation_password
 
     def save(self):
         user = User.objects.create_user(
             self.cleaned_data['username'],
-            self.first_name['first_name'],
-            self.last_name['last_name'],
-            self.cleaned_data['email'],
-            self.cleaned_data['password1'],
-            self.introduction,
+            first_name = self.cleaned_data['first_name'],
+            last_name = self.cleaned_data['last_name'],
+            email = self.cleaned_data['email'],
+            password = self.cleaned_data['new_password'],
         )
         return user

@@ -17,7 +17,7 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="m-2 navbar navbar-expand-lg navbar-light bg">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light p-2">
       <!-- App Title-->
       <a class="p-2 navbar-brand" href="{% url 'homepage' %}"><h2> Tradesman KE</h2></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,67 +26,73 @@
           </span>
       </button>
   
+      <div class="flex-fill">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav m-2">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">About Us</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Listings
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                <li><a class="dropdown-item" href="{% url 'stores' %}">Merchant Listings</a></li>
+                <li><a class="dropdown-item" href="#">Product Listings</a></li>
+                <li><a class="dropdown-item" href="#">Service Listings</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Tradesman Policies
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Data Protection Policy</a></li>
+                <li><a class="dropdown-item" href="#">Payment Protection Policy</a></li>
+                <li><a class="dropdown-item" href="#">Product Protection Policy</a></li>
+                <li><a class="dropdown-item" href="#">Intellectual Property Rights Policy</a></li>
+              </ul>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Support</a>
+            </li>
+          </ul>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav m-2">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">About Us</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Listings
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              
-              <li><a class="dropdown-item" href="{% url 'stores' %}">Merchant Listings</a></li>
-              <li><a class="dropdown-item" href="#">Product Listings</a></li>
-              <li><a class="dropdown-item" href="#">Service Listings</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Tradesman Policies
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Data Protection Policy</a></li>
-              <li><a class="dropdown-item" href="#">Payment Protection Policy</a></li>
-              <li><a class="dropdown-item" href="#">Product Protection Policy</a></li>
-              <li><a class="dropdown-item" href="#">Intellectual Property Rights Policy</a></li>
-            </ul>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Support</a>
-          </li>
-        </ul>
+            <form>
+              <input type="text" placehoder="Search"/>
+              <button class="btn btn-secondary" type="submit">Search</button>            
+            </form>
 
-          <form class="form-inline my-2 my-lg-0">
-            <input class="mr-sm-2" type="text" placehoder="Search"/>
-            <button class="btn btn-outline-dark" type="submit">Search</button>            
-          </form>
-
-          
-          {% if request.user.is_superuser %}
-            <a class="btn btn-outline-dark my-sm-0" type="submit" style="margin-left:5%;" href="{% url 'vendor_admin' %}">Administration</a>
-          {% else %}
-          <a class="btn bg-white m-2 my-sm-0" type="submit" style="margin-left:5%;" href="{% url 'cart' %}">Cart <img src="https://img.icons8.com/material/24/000000/shopping-cart--v1.png"/></a> 
-          {% endif %}
+            {% if request.user.is_superuser %}
+              <a class="btn btn-outline-dark my-sm-0" type="submit" style="margin-left:5%;" href="{% url 'vendor_admin' %}">Administration</a>
+            {% else %}
+            <a class="btn bg-white m-2 my-sm-0" type="submit" href="{% url 'cart' %}">Cart <img src="https://img.icons8.com/material/24/000000/shopping-cart--v1.png"/></a> 
+            {% endif %}
 
 
-          {% if request.user.is_authenticated %}
-            <a class="btn btn-warning m-2 my-sm-0" style="float:right" type="submit" style="margin-left:5%;" href="{% url 'logout' %}">Logout</a>
-          {% else %}
-            <a class="btn btn-primary m-2 my-sm-0" style="float:right" type="submit" style="margin-left:5%;" href="{% url 'login'%}">Login</a>
-            <a class="btn btn-outline-success m-2 my-sm-0" style="float:right" type="submit" style="margin-left:5%;" href="{% url 'sign_up'%}">Sign Up</a>
-          {% endif %}
+            {% if request.user.is_authenticated %}
+              <a class="btn btn-warning m-2 my-sm-0" type="submit" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+              <a class="btn btn-primary m-2 my-sm-0"  type="submit" href="{% url 'login'%}">Login</a>
+              <a class="btn btn-outline-success m-2 my-sm-0"  type="submit" style="margin-left:5%;" href="{% url 'sign_up'%}">Sign Up</a>
+            {% endif %}
+            
         </div>
-        {% include 'vendors/parts/modals/login.html' %}
       </div>
   </nav>
   {# Display django.contrib.messages as Bootstrap alerts #}
-  {% bootstrap_messages %}
+  {% if messages %}
+      <ul>
+        {% for messages in messages%}
+          <li class="{{message.tags}}">{{ message }}</li>
+        {%endfor%}
+      </ul>
+    {%endif%}
+    
 
   <!-- Django Code -->
-  <div class="container">
+  <div class="container mt-4 p-4">
       {% block content %}
       
       {% endblock content %}
@@ -96,28 +102,8 @@
 </body>
 
 
-<footer class="page-footer font-small special-color-dark pt-4 ">
-  <div class="container">    
-      <div class="row">    
-          <div class="col-md-6 mb-4"> 
-          <form class="form-inline">
-              <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
-              aria-label="Search">
-              <i class="fas fa-search" aria-hidden="true"></i>
-          </form>
-          </div>
-          <div class="col-md-6 mb-4">    
-          <form class="input-group">
-              <input type="text" class="form-control form-control-sm" placeholder="Your email"
-              aria-label="Your email" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-              <button class="btn btn-sm btn-outline-white my-0" type="button">Newsletter Sign up</button>
-              </div>
-          </form>    
-          </div> 
-      </div>   
-  </div>
-  <div class="footer-copyright text-center py-3">© 2022 Copyright:
-      <a href="{% url 'homepage' %}"> Tradesman KE</a>
+<footer class="" >
+  
+  <div class="footer-copyright text-center py-3">© 2022 Copyright Tradesman KE
   </div>
 </footer>

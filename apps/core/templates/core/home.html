@@ -10,7 +10,7 @@
                     {% else %}
                         <h4>Newest Products</h4>
                         {% for product in newest_products %}
-                            <div class="col-lg-5">
+                            <div class="col-lg-4">
                             {% include 'products/parts/list_item.html' %}
                             </div>
                         {% endfor %}   
@@ -23,7 +23,7 @@
                     <div class="row">
                         <h5>Latest Services</h5>
                         {% for product in latest_services %}
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             {% include 'products/parts/list_item.html' %}
                         </div>
                         {% endfor %}                    
@@ -37,7 +37,7 @@
                     <div class="row">                
                         <h5>Newest Ventures</h5>
                         {% for product in latest_ventures %}
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             {% include 'products/parts/list_item.html' %}
                         </div>
                         {% endfor %}

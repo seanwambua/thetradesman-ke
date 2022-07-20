@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 
 
+
 def homepage(request):
     latest_services = Products.objects.filter(category=1)[0:6]
     newest_products = Products.objects.filter(category=2)[0:6]

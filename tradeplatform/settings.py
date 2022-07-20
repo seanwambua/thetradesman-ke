@@ -1,6 +1,8 @@
+from email import message
 from pathlib import os, Path
 from re import S
 from decouple import config
+from django.contrib.messages import constants as message_constants
 
 config.encoding = config('ENCODING')
 
@@ -64,6 +66,8 @@ TEMPLATES = [
         },
     },
 ]
+
+MESSAGE_LEVEL = message_constants.DEBUG
 
 WSGI_APPLICATION = 'tradeplatform.wsgi.application'
 
