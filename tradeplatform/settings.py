@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'apps.core',
     'apps.vendors',
     'apps.products',
+    'apps.services',
 
     'bootstrap_modal_forms',
     "bootstrap5",

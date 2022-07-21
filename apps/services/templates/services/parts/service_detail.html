@@ -2,8 +2,8 @@
 	<div class="card shadow p-4 mb-4 bg-white rounded" >
 		<div class="card-image">
 			<figure>
-				{% if product.image %}
-					<img  class="mx-auto d-block img-fluid img-thumbnail" src="{{product.image.url}}">		
+				{% if service.image %}
+					<img  class="mx-auto d-block img-fluid img-thumbnail" src="{{service.image.url}}">		
 				{% endif %}
 			</figure>
 			<p>Tradesman Rating: </p>
@@ -14,20 +14,20 @@
 <div class="col-lg-8">
 	<div class="card shadow p-4 mb-4 bg-white rounded" >
 		<div class="card-header bg-white">
-			<h4>{{ product.title}} </h4>
+			<h4>{{ service.title}} </h4>
 		</div>
 
 		<div class="card-body">
-			<p class="mb-6">Price: Ksh. {{product.price}}</p>
-			<p class="mb-6">Summary:{{product.description}}</p>
-			<a  class="btn btn-primary" href="{% url 'cart' %}">Hire {{product.vendor.first_name}}</a>
+			<p class="mb-6">Price: Ksh. {{service.price}}</p>
+			<p class="mb-6">Summary:{{service.description}}</p>
+			<a  class="btn btn-primary" href="{% url 'cart' %}">Hire {{service.vendor.first_name}}</a>
 			<a  class="btn btn-outline-dark"  data-bs-toggle="modal" data-bs-target="#myModal" style="float:right" href="{% url 'cart' %}">Request Quotation</a></p>
 			{% include 'vendors/parts/modals/quotation_modal.html' %}
 		</div>
 
 		<div class="card-footer  bg-white">
-			Merchant: <a href="#">{{product.vendor}}</a>
-			<span style="float:right">category:<a style="float:right" href="#">{{product.category}}</a></span>
+			Merchant: <a href="#">{{service.vendor}}</a>
+			<span style="float:right">category:<a style="float:right" href="#">{{service.category}}</a></span>
 		</div>
 	</div>
 </div>
@@ -52,7 +52,7 @@
 			</div>
 	
 			<div class="card-footer">
-				<p>This {{product.category}} is covered by the following Tradesman Policies; </p>
+				<p>This {{service.category}} is covered by the following Tradesman Policies; </p>
 				<a href="#"> Payment Protection Policy</a><br>
 				<a href="#"> Data Protection Policy</a>
 			</div>
@@ -81,7 +81,7 @@
 			</div>
 	
 			<div class="card-footer">
-				<p>This {{product.category}} is covered by the following Tradesman Policies; </p>
+				<p>This {{service.category}} is covered by the following Tradesman Policies; </p>
 				<a href="#"> Payment Protection Policy</a><br>
 				<a href="#"> Data Protection Policy</a>
 			</div>

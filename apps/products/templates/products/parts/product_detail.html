@@ -2,8 +2,8 @@
 	<div class="card shadow p-4 mb-4 bg-white rounded" >
 		<div class="card-image">
 			<figure>
-				{% if product.image %}
-					<img  class="mx-auto d-block img-fluid img-thumbnail" style="width:28rem" src="{{product.image.url}}">		
+				{% if service.image %}
+					<img  class="mx-auto d-block img-fluid img-thumbnail" style="width:28rem" src="{{services.image.url}}">		
 				{% endif %}
 			</figure>
 		</div>
@@ -13,18 +13,18 @@
 <div class="col-lg-8">
 	<div class="card shadow p-4 mb-4 bg-white rounded" >
 		<div class="card-header bg-white">
-			<h4>{{ product.title}} </h4>
+			<h4>{{ service.title}} </h4>
 		</div>
 
 		<div class="card-body">
-			<p class="mb-6">Price: Ksh. {{product.price}}</p>
-			<p class="mb-6">Summary:{{product.description}}</p>
+			<p class="mb-6">Price: Ksh. {{service.price}}</p>
+			<p class="mb-6">Summary:{{service.description}}</p>
 			<p><a  class="btn btn-primary" href="{% url 'cart' %}">Add to Cart</a></p>
 		</div>
 
 		<div class="card-footer  bg-white">
-			Merchant: <a href="#">{{product.vendor}}</a>
-			<span style="float:right">category:<a style="float:right" href="#">{{product.category}}</a></span>
+			Merchant: <a href="#">{{service.vendor}}</a>
+			<span style="float:right">category:<a style="float:right" href="#">{{service.category}}</a></span>
 		</div>
 	</div>
 </div>
@@ -49,7 +49,7 @@
 			</div>
 	
 			<div class="card-footer">
-				<p>This {{product.category}} is covered by the following Tradesman Policies; </p>
+				<p>This {{service.category}} is covered by the following Tradesman Policies; </p>
 				<a href="#"> Payment Protection Policy</a><br>
 				<a href="#"> Data Protection Policy</a>
 			</div>
