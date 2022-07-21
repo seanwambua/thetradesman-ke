@@ -27,12 +27,13 @@
                         </div>
                     </div>
 
+                    {# ----------- CATALOG ---------------------------- #}
 
                     <div class="col-lg-8">                    
                         <div class="card shadow p-4 mb-5 bg-white rounded" >
                             <div class="card-tite">	
                                 <h4>Catalog:</h4>
-                                <a style="float:right" class="btn btn-success" href="{% url 'catalog_update'%}">Update Catalog</a>
+                                <a style="float:right" class="btn btn-outline-success" href="{% url 'catalog_update'%}">Update Catalog</a>
                             </div>
 
                             <div class="card-body">
@@ -53,8 +54,8 @@
                                                     <td>{{product.date_added}}</td>
                                                     <td>{{ product.title }}</td>
                                                     <td>Ksh. {{ product.price }}</td>
-                                                    <td><a  class="btn btn-warning" style="float:right" href="{% url 'cart' %}">Change</a></td>
-                                                    <td><a  class="btn btn-danger" style="float:right" href="{% url 'delete' %}">Delete</a></td>
+                                                    <td><a  class="btn btn-outline-warning" style="float:right" href="{% url 'cart' %}">Change</a></td>
+                                                    <td><a  class="btn btn-outline-danger" style="float:right" href="{% url 'delete' %}">Delete</a></td>
                                                 </tr>
                                             {% endfor %}
                                         </tbody>
@@ -64,7 +65,9 @@
                                 {% endif %}
                             </div>
                         </div>
-                    
+
+                        {# ----------- ORDERS ---------------------------- #}
+
                         <div class="card shadow p-4 mb-5 bg-white rounded" >
                             <h4 class="card-title">Purchase Orders:</h4>
                             <hr>
@@ -85,8 +88,8 @@
                                                 <td>{{ product.title }}</td>
                                                 <td>Ksh. {{ product.price }}</td>
                                                 <td><a  class="btn btn-outline-primary" style="float:right" href="{% url 'cart' %}">View</a></td>
-                                                <td><a  class="btn btn-outline-success" style="float:right" href="{% url 'cart' %}">Archive</a></td>
-                                                <td><a  class="btn btn-danger" style="float:right" href="{% url 'cart' %}">Cancel Order</a></td>
+                                               
+                                                <td><a  class="btn btn-outline-danger" style="float:right" href="{% url 'cart' %}">Cancel Order</a></td>
                                             </tr>
                                         {% endfor %}
                                     </tbody>
@@ -98,34 +101,35 @@
                         </div>
                     </div>
 
+                    {# ----------- INVOICES ---------------------------- #}
 
-                        <div class="col-sm-12"> 
-                            <div class="card shadow p-4 mb-5 bg-white rounded" >
-                                <h5 class="card-title">Invoices:</h5>
-                                <hr>
-                                {% if products %}
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Date Added</th>
-                                                <th>Title</th>
-                                                <th>Price</th>
-                                            </tr>
-                                        </thead>
+                    <div class="col-sm-12"> 
+                        <div class="card shadow p-4 mb-5 bg-white rounded" >
+                            <h5 class="card-title">Invoices:</h5>
+                            <hr>
+                            {% if products %}
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Date Added</th>
+                                        <th>Title</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
     
-                                        <tbody>
-                                            {% for product in products%}
-                                                <tr>
-                                                    <td>{{product.date_added}}</td>
-                                                    <td>{{ product.title }}</td>
-                                                    <td>Ksh. {{ product.price }}</td>
-                                                    <td><a  class="btn btn-outline-primary" style="float:right" href="{% url 'cart' %}">View</a></td>
-                                                    <td><a  class="btn btn-outline-success" style="float:right" href="{% url 'cart' %}">Archive</a></td>
-                                                    <td><a  class="btn btn-dark" style="float:right" href="{% url 'cart' %}">Download</a></td>
-                                                </tr>
-                                            {% endfor %}
-                                        </tbody>
-                                    </table>
+                                <tbody>
+                                    {% for product in products%}
+                                    <tr>
+                                        <td>{{product.date_added}}</td>
+                                            <td>{{ product.title }}</td>
+                                            <td>Ksh. {{ product.price }}</td>
+                                           <td><a  class="btn btn-outline-primary" style="float:right" href="{% url 'cart' %}">View</a></td>
+                                            
+                                        <td><a  class="btn btn-dark" style="float:right" href="{% url 'cart' %}">Download</a></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
     
                                 {% else %}
                                     <p>You do not have any Closed Orders listed. </p>

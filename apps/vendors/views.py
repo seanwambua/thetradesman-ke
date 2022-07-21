@@ -32,7 +32,7 @@ def sign_up(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            Vendor.objects.create(name=user.username, first_name=user.first_name, last_name=user.last_name,
+            vendor = Vendor.objects.create(name=user.username, first_name=user.first_name, last_name=user.last_name,
                                            email=user.email, created_by=user)
             return redirect('homepage')
             

@@ -5,5 +5,14 @@
     "python.autoComplete.extraPaths": [
     
     ],
-    "python.analysis.extraPaths": []
+    "python.analysis.extraPaths": [],
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./tradeplatform",
+        "-p",
+        "test*.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true
 }

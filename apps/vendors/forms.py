@@ -18,6 +18,7 @@ class ProductsForm(ModelForm):
         ]
 
 class CustomUserCreationForm(forms.Form):
+#    profile_photo = forms.ImageField(label='Please upload a photo for your profile')
     first_name = forms.CharField(label='Please enter your first name:',min_length=2, max_length=150)
     last_name = forms.CharField(label='Please enter your last name:',min_length=2, max_length=150)
     email = forms.EmailField(label='Please enter your official email')
@@ -53,6 +54,7 @@ class CustomUserCreationForm(forms.Form):
     def save(self):
         user = User.objects.create_user(
             self.cleaned_data['username'],
+          #  profile_photo = self.cleaned_data['profile_photo'],
             first_name = self.cleaned_data['first_name'],
             last_name = self.cleaned_data['last_name'],
             email = self.cleaned_data['email'],
