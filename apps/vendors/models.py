@@ -21,8 +21,7 @@ class Vendor(models.Model):
     email = models.EmailField(max_length=255, null=True, blank=True)
     intro = models.CharField(max_length=255, null=True, blank=True)
     date_time_created = models.DateTimeField(auto_now_add=True)
-    created_by = models.OneToOneField(User, related_name='vendor', on_delete=models.CASCADE)
-    
+    created_by = models.OneToOneField(User, related_name='vendor', on_delete=models.CASCADE)    
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
 
