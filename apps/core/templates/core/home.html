@@ -22,9 +22,9 @@
                 {% else %}
                     <div class="row">
                         <h5>Latest Services</h5>
-                        {% for product in latest_services %}
+                        {% for service in latest_services %}
                         <div class="col-lg-3">
-                            {% include 'products/parts/list_item.html' %}
+                            {% include 'services/parts/list_item.html' %}
                         </div>
                         {% endfor %}                    
                     </div>

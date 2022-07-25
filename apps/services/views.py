@@ -7,7 +7,7 @@ from .models import Services
 
 class ServiceDetailView(DetailView):
     model = Services
-    context_object_name = 'services'
+    context_object_name = 'service'
     template_name = 'services/services.html'
 
 class ServiceDeleteView(DeleteView):
