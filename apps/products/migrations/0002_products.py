@@ -6,7 +6,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('vendors', '0003_remove_vendor_brand_name_remove_vendor_email'),
+        ('AccountUsers', '0003_remove_AccountUser_brand_name_remove_AccountUser_email'),
         ('products', '0001_initial'),
     ]
 
@@ -24,8 +24,8 @@ class Migration(migrations.Migration):
                 ('thumbnail', models.ImageField(blank=True, null=True, upload_to='uploads/')),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='products',
                                                to='products.category')),
-                ('vendor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='products',
-                                             to='vendors.vendor')),
+                ('AccountUser', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='products',
+                                             to='AccountUsers.AccountUser')),
             ],
             options={
                 'ordering': ['-date_added'],

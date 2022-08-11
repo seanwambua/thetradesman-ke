@@ -12,6 +12,6 @@ class ServiceDetailView(DetailView):
 
 class ServiceDeleteView(DeleteView):
     model = Services
-    success_url ="vendor_admin"
+    success_url ="AccountUser_admin"
    
     

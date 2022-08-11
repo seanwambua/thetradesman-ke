@@ -5,16 +5,16 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('vendors', '0002_alter_vendor_options_and_more'),
+        ('AccountUsers', '0002_alter_AccountUser_options_and_more'),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='vendor',
+            model_name='AccountUser',
             name='brand_name',
         ),
         migrations.RemoveField(
-            model_name='vendor',
+            model_name='AccountUser',
             name='email',
         ),
     ]

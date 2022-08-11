@@ -6,19 +6,19 @@ from django.shortcuts import render, redirect
 from django.utils.text import slugify
 
 from .forms import ProductsForm, CustomUserCreationForm
-from .models import Vendor
+from .models import AccountUser
 from django.core.paginator import Paginator
 from django.contrib import messages
 
 class SuccessMessageMixin:
     success_message = ''
 
-class VendorLogoutView(LogoutView):
-    template_name = 'vendors/vendor_logout.html'
+class AccountUserLogoutView(LogoutView):
+    template_name = 'AccountUsers/AccountUser_logout.html'
 
 
-class VendorLoginView(LoginView):
-    template_name = 'vendors/vendor_login.html'
+class AccountUserLoginView(LoginView):
+    template_name = 'AccountUsers/AccountUser_login.html'
     success_message = "Welcome back, you've succesfully logged in"
 
     def authenticated(self):
@@ -32,21 +32,21 @@ def sign_up(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            vendor = Vendor.objects.create(name=user.username, first_name=user.first_name, last_name=user.last_name,
+            AccountUser = AccountUser.objects.create(name=user.username, first_name=user.first_name, last_name=user.last_name,
                                            email=user.email, created_by=user)
             return redirect('homepage')
             
     else:
         form = CustomUserCreationForm()
         messages.warning(request, "Sign up failed, please try again")
-    return render(request, 'vendors/vendor_signup.html', {'form': form})
+    return render(request, 'AccountUsers/AccountUser_signup.html', {'form': form})
 
 
 @login_required
-def vendor_admin(request):
-    vendor = request.user.vendor
-    products = vendor.products.all()
-    return render(request, 'vendors/vendor_admin.html', {'vendor': vendor, 'products': products})
+def AccountUser_admin(request):
+    AccountUser = request.user.AccountUser
+    products = AccountUser.products.all()
+    return render(request, 'AccountUsers/AccountUser_admin.html', {'AccountUser': AccountUser, 'products': products})
 
 
 @login_required
@@ -55,17 +55,17 @@ def catalog_update(request):
         form = ProductsForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save(commit=False)
-            product.vendor = request.user.vendor
+            product.AccountUser = request.user.AccountUser
             product.slug = slugify(product.title)
             product.save()
-            return redirect('vendor_admin')
+            return redirect('AccountUser_admin')
     else:
         form = ProductsForm()
-    return render(request, 'vendors/catalogUpdate.html', {'form': form})
+    return render(request, 'AccountUsers/catalogUpdate.html', {'form': form})
 
-class VendorListView(ListView):
-    model = Vendor
+class AccountUserListView(ListView):
+    model = AccountUser
     paginate_by: 2
-    context_object_name = 'vendors'
-    template_name = 'vendors/vendors_list.html'
+    context_object_name = 'AccountUsers'
+    template_name = 'AccountUsers/AccountUsers_list.html'
 

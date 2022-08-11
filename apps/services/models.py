@@ -1,7 +1,7 @@
 from io import BytesIO
 from tabnanny import verbose
 from PIL import Image
-from apps.vendors.models import Vendor
+from apps.accounts.models import AccountUser
 from django.core.files import File
 from django.db import models
 
@@ -34,7 +34,7 @@ def make_thumbnail(image, size=(400, 400)):
 
 class Services(models.Model):
     category = models.ForeignKey(Category, related_name="services", on_delete=models.CASCADE)
-    vendor = models.ForeignKey(Vendor, related_name="services", on_delete=models.CASCADE)
+    account = models.ForeignKey(AccountUser, related_name="account", on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     description = models.TextField(blank=True, null=True)

@@ -5,12 +5,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('vendors', '0004_alter_vendor_options_rename_username_vendor_name'),
+        ('AccountUsers', '0004_alter_AccountUser_options_rename_username_AccountUser_name'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='vendor',
+            model_name='AccountUser',
             name='intro',
             field=models.CharField(blank=True, max_length=255, null=True),
         ),

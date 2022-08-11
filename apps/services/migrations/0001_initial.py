@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('vendors', '0006_vendor_email_vendor_first_name_vendor_last_name'),
+        ('AccountUsers', '0006_AccountUser_email_AccountUser_first_name_AccountUser_last_name'),
     ]
 
     operations = [
@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 ('image', models.ImageField(blank=True, null=True, upload_to='uploads/')),
                 ('thumbnail', models.ImageField(blank=True, null=True, upload_to='uploads/')),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='services', to='services.category')),
-                ('vendor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='services', to='vendors.vendor')),
+                ('AccountUser', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='services', to='AccountUsers.AccountUser')),
             ],
             options={
                 'ordering': ['-date_added'],

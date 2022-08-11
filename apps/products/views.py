@@ -12,6 +12,6 @@ class ProductDetailView(DetailView):
 
 class ProductDeleteView(DeleteView):
     model = Products
-    success_url ="vendor_admin"
+    success_url ="AccountUser_admin"
    
     

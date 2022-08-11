@@ -6,17 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('vendors', '0006_vendor_email_vendor_first_name_vendor_last_name'),
+        ('AccountUsers', '0006_AccountUser_email_AccountUser_first_name_AccountUser_last_name'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='vendor',
+            model_name='AccountUser',
             name='image',
             field=models.ImageField(blank=True, null=True, upload_to='uploads/'),
         ),
         migrations.AddField(
-            model_name='vendor',
+            model_name='AccountUser',
             name='thumbnail',
             field=models.ImageField(blank=True, null=True, upload_to='uploads/'),
         ),

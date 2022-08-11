@@ -4,7 +4,7 @@ The Tradesman KE
 
     Stack: Bootstrap, Django, MySQL.
 
-    Features: Multi-vendor Store, Custom Admin panel, Payment Integration, Secure Checkout.
+    Features: Multi-AccountUser Store, Custom Admin panel, Payment Integration, Secure Checkout.
 
     Platform: Web (Responsive).
 

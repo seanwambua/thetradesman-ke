@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 
-{% block title %} Vendor Admin {% endblock %}
+{% block title %} AccountUser Admin {% endblock %}
 
         {% block content %}
 
@@ -14,15 +14,15 @@
                           <div class="card-body">
 
                             <div class="media-content">
-                              <p class="title is-4">{{vendor.name}}</p>
-                              <p class="subtitle is-6">@{{vendor.name}}</p>
+                              <p class="title is-4">{{AccountUser.name}}</p>
+                              <p class="subtitle is-6">@{{AccountUser.name}}</p>
                             </div>
 
                             <div class="content">
-                              <a>@{{vendor.name}}</a>.
-                              <a href="#">#tradesman</a> <a href="#">#vendor</a>
+                              <a>@{{AccountUser.name}}</a>.
+                              <a href="#">#tradesman</a> <a href="#">#AccountUser</a>
                               <br>
-                              <time datetime="2016-1-1">Created:{{vendor.date_time_created}}</time>
+                              <time datetime="2016-1-1">Created:{{AccountUser.date_time_created}}</time>
                             </div>
 
                           </div>

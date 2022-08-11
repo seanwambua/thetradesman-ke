@@ -5,16 +5,16 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('vendors', '0003_remove_vendor_brand_name_remove_vendor_email'),
+        ('AccountUsers', '0003_remove_AccountUser_brand_name_remove_AccountUser_email'),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='vendor',
+            name='AccountUser',
             options={'ordering': ['name', 'date_time_created']},
         ),
         migrations.RenameField(
-            model_name='vendor',
+            model_name='AccountUser',
             old_name='username',
             new_name='name',
         ),

@@ -5,22 +5,22 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('vendors', '0005_vendor_intro'),
+        ('AccountUsers', '0005_AccountUser_intro'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='vendor',
+            model_name='AccountUser',
             name='email',
             field=models.EmailField(blank=True, max_length=255, null=True),
         ),
         migrations.AddField(
-            model_name='vendor',
+            model_name='AccountUser',
             name='first_name',
             field=models.CharField(blank=True, max_length=255, null=True),
         ),
         migrations.AddField(
-            model_name='vendor',
+            model_name='AccountUser',
             name='last_name',
             field=models.CharField(blank=True, max_length=255, null=True),
         ),

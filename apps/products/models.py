@@ -1,7 +1,7 @@
 from io import BytesIO
-
+from tabnanny import verbose
 from PIL import Image
-from apps.vendors.models import Vendor
+from apps.accounts.models import AccountUser
 from django.core.files import File
 from django.db import models
 
@@ -12,6 +12,7 @@ class Category(models.Model):
     ordering = models.IntegerField(default=0)
 
     class Meta:
+        verbose_name_plural = 'Categories'
         ordering = ['slug']
 
     def __str__(self):
@@ -32,18 +33,21 @@ def make_thumbnail(image, size=(300, 200)):
 
 
 class Products(models.Model):
-    category = models.ForeignKey(Category, related_name="products", on_delete=models.CASCADE)
-    vendor = models.ForeignKey(Vendor, related_name="products", on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name="categories", on_delete=models.CASCADE)
+    account = models.ForeignKey(AccountUser, related_name="account", on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=0)
-    date_added = models.DateTimeField(auto_now_add=True)
+    in_stock = models.BooleanField()
+    in_active = models.BooleanField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
 
     class Meta:
-        ordering = ['-date_added']  # Descending order
+        ordering = ['-created']  # Descending order
 
     def __str__(self):
         return self.title
