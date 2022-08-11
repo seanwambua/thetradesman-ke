@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'apps.products',
     'apps.services',
 
-    'bootstrap_modal_forms',
     "bootstrap5",
 ]
 
