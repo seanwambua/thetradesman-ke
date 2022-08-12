@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from io import BytesIO
 from tabnanny import verbose
 from PIL import Image
@@ -6,7 +7,19 @@ from django.core.files import File
 from django.db import models
 
 
-class Category(models.Model):
+class DeliveryPeriod(models.Model):
+    title = models.CharField(max_length=255, default=0, null=False)
+    slug = models.SlugField(max_length=255)
+    ordering = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name_plural = 'Delivery Periods'
+        ordering = ['slug']
+
+    def __str__(self):
+        return self.title
+
+class Category (models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     ordering = models.IntegerField(default=0)
@@ -17,6 +30,23 @@ class Category(models.Model):
 
     def __str__(self):
         return self.slug
+
+class ProductPolicy(models.Model):
+    title = models.CharField(max_length=255, null = True)
+    slug = models.SlugField(max_length=255)
+    description = models.CharField(max_length=255)
+    service_terms = models.CharField(max_length=255)
+    payment_terms= models.CharField(max_length=255)
+    author = models.ForeignKey(AccountUser, related_name="product_policy_author", on_delete=models.CASCADE)
+    ordering = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name_plural = 'Delivery Periods'
+        ordering = ['slug']
+
+    def __str__(self):
+        return self.title
+
 
 
 def make_thumbnail(image, size=(300, 200)):
@@ -34,13 +64,15 @@ def make_thumbnail(image, size=(300, 200)):
 
 class Products(models.Model):
     category = models.ForeignKey(Category, related_name="categories", on_delete=models.CASCADE)
-    account = models.ForeignKey(AccountUser, related_name="account", on_delete=models.CASCADE)
+    account = models.ForeignKey(AccountUser, related_name="product_user", on_delete=models.CASCADE)    
+    policy = models.ForeignKey(ProductPolicy, related_name="product_policy", on_delete=models.CASCADE)
+    delivery_frequency = models.ForeignKey(DeliveryPeriod, related_name="delivery_frequency", on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=0)
-    in_stock = models.BooleanField()
-    in_active = models.BooleanField()
+    is_stock = models.BooleanField()
+    is_active = models.BooleanField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
@@ -48,6 +80,7 @@ class Products(models.Model):
 
     class Meta:
         ordering = ['-created']  # Descending order
+        verbose_name_plural = 'Products'
 
     def __str__(self):
         return self.title
@@ -62,3 +95,5 @@ class Products(models.Model):
                 return self.thumbnail.url
             else:
                 return 'https://via.placeholder.com/240x180.jpg'
+
+

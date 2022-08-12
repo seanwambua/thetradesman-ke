@@ -12,17 +12,18 @@ class AccountType(models.Model):
         ordering = ['slug']
 
     def __str__(self):
-        return self.slug
+        return self.title
 
 class AccountUser(models.Model):
-    type = models.ForeignKey(AccountType, related_name="account_types", on_delete=models.CASCADE)
+    type = models.ForeignKey(AccountType, related_name="types", on_delete=models.CASCADE)
+    created_by = models.OneToOneField(User, related_name='user', on_delete=models.CASCADE)   
     name = models.CharField(max_length=20)
     first_name = models.CharField(max_length=255, null=True, blank=True)
     last_name = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField(max_length=255, null=True, blank=True)
     intro = models.CharField(max_length=255, null=True, blank=True)
     date_time_created = models.DateTimeField(auto_now_add=True)
-    created_by = models.OneToOneField(User, related_name='AccountUser', on_delete=models.CASCADE)    
+     
     image = models.ImageField(upload_to='profile/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='profile/', blank=True, null=True)
 
