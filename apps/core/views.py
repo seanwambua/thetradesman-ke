@@ -1,4 +1,4 @@
-from apps.products.models import Products
+from apps.store.models import Products, Services
 from django.shortcuts import render
 
 

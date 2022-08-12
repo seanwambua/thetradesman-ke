@@ -10,8 +10,7 @@ from .models import AccountUser
 from django.core.paginator import Paginator
 from django.contrib import messages
 
-class SuccessMessageMixin:
-    success_message = ''
+
 
 class AccountUserLogoutView(LogoutView):
     template_name = 'AccountUsers/logout.html'
@@ -43,7 +42,7 @@ def sign_up(request):
 
 
 @login_required
-def AccountUser_admin(request):
+def user_administration(request):
     AccountUser = request.user.AccountUser
     products = AccountUser.products.all()
     return render(request, 'AccountUsers/useradministration.html', {'AccountUser': AccountUser, 'products': products})
@@ -66,6 +65,6 @@ def catalog_update(request):
 class AccountUserListView(ListView):
     model = AccountUser
     paginate_by: 2
-    context_object_name = 'AccountUsers'
+    context_object_name = 'accounts_list'
     template_name = 'AccountUsers/list.html'
 

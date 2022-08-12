@@ -7,18 +7,6 @@ from django.core.files import File
 from django.db import models
 
 
-class DeliveryPeriod(models.Model):
-    title = models.CharField(max_length=255, default=0, null=False)
-    slug = models.SlugField(max_length=255)
-    ordering = models.IntegerField(default=0)
-
-    class Meta:
-        verbose_name_plural = 'Delivery Periods'
-        ordering = ['slug']
-
-    def __str__(self):
-        return self.title
-
 class Category (models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
@@ -31,13 +19,13 @@ class Category (models.Model):
     def __str__(self):
         return self.slug
 
-class ProductPolicy(models.Model):
+class Policy(models.Model):
     title = models.CharField(max_length=255, null = True)
     slug = models.SlugField(max_length=255)
     description = models.CharField(max_length=255)
     service_terms = models.CharField(max_length=255)
     payment_terms= models.CharField(max_length=255)
-    policy = models.ForeignKey(AccountUser, related_name="product_policy_author", on_delete=models.CASCADE)
+    policy_author = models.ForeignKey(AccountUser, related_name="policy_author", on_delete=models.CASCADE)
     ordering = models.IntegerField(default=0)
 
     class Meta:
@@ -47,6 +35,18 @@ class ProductPolicy(models.Model):
     def __str__(self):
         return self.title
 
+
+class DeliveryPeriod(models.Model):
+    title = models.CharField(max_length=255, default=0, null=False)
+    slug = models.SlugField(max_length=255)
+    ordering = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name_plural = 'Delivery Periods'
+        ordering = ['slug']
+
+    def __str__(self):
+        return self.title
 
 
 def make_thumbnail(image, size=(300, 200)):
@@ -65,7 +65,7 @@ def make_thumbnail(image, size=(300, 200)):
 class Products(models.Model):
     category = models.ForeignKey(Category, related_name="categories", on_delete=models.CASCADE)
     useraccount = models.ForeignKey(AccountUser, related_name="product_user", on_delete=models.CASCADE)    
-    policy = models.ForeignKey(ProductPolicy, related_name="product_policy", on_delete=models.CASCADE)
+    policy = models.ForeignKey(Policy, related_name="product_policy", on_delete=models.CASCADE)
     delivery_frequency = models.ForeignKey(DeliveryPeriod, related_name="delivery_frequency", on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
