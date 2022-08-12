@@ -32,8 +32,7 @@ INSTALLED_APPS = [
 
     'apps.core',
     'apps.accounts',
-    'apps.products',
-    'apps.services',
+    'apps.store',
 
     "bootstrap5",
 ]

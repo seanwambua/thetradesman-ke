@@ -15,8 +15,8 @@ class AccountType(models.Model):
         return self.title
 
 class AccountUser(models.Model):
-    type = models.ForeignKey(AccountType, related_name="types", on_delete=models.CASCADE)
-    created_by = models.OneToOneField(User, related_name='user', on_delete=models.CASCADE)   
+    account_type = models.ForeignKey(AccountType, related_name="types", on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name='user', on_delete=models.CASCADE)   
     name = models.CharField(max_length=20)
     first_name = models.CharField(max_length=255, null=True, blank=True)
     last_name = models.CharField(max_length=255, null=True, blank=True)

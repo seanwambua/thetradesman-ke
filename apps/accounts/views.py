@@ -14,11 +14,11 @@ class SuccessMessageMixin:
     success_message = ''
 
 class AccountUserLogoutView(LogoutView):
-    template_name = 'AccountUsers/AccountUser_logout.html'
+    template_name = 'AccountUsers/logout.html'
 
 
 class AccountUserLoginView(LoginView):
-    template_name = 'AccountUsers/AccountUser_login.html'
+    template_name = 'AccountUsers/login.html'
     success_message = "Welcome back, you've succesfully logged in"
 
     def authenticated(self):
@@ -39,14 +39,14 @@ def sign_up(request):
     else:
         form = CustomUserCreationForm()
         messages.warning(request, "Sign up failed, please try again")
-    return render(request, 'AccountUsers/AccountUser_signup.html', {'form': form})
+    return render(request, 'AccountUsers/signup.html', {'form': form})
 
 
 @login_required
 def AccountUser_admin(request):
     AccountUser = request.user.AccountUser
     products = AccountUser.products.all()
-    return render(request, 'AccountUsers/AccountUser_admin.html', {'AccountUser': AccountUser, 'products': products})
+    return render(request, 'AccountUsers/useradministration.html', {'AccountUser': AccountUser, 'products': products})
 
 
 @login_required
@@ -67,5 +67,5 @@ class AccountUserListView(ListView):
     model = AccountUser
     paginate_by: 2
     context_object_name = 'AccountUsers'
-    template_name = 'AccountUsers/AccountUsers_list.html'
+    template_name = 'AccountUsers/list.html'
 

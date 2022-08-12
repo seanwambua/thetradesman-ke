@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from .models import AccountType, AccountUser
 
 
@@ -11,6 +10,6 @@ class AccountTypeAdmin(admin.ModelAdmin):
 admin.site.register(AccountUser)
 class AccountUserAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
-    prepopulated_fields = {"slug":("name",)}
+    prepopulated_fields = {'slug':('name',)} 
     list_filter=['is_staff', 'is_superuser']
     list_editable= ['name']
