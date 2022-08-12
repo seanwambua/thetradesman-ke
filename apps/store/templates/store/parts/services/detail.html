@@ -22,7 +22,7 @@
 			<p class="mb-6">Summary:{{service.description}}</p>
 			<a  class="btn btn-primary" href="{% url 'cart' %}">Hire {{service.vendor.first_name}}</a>
 			<a  class="btn btn-outline-dark"  data-bs-toggle="modal" data-bs-target="#myModal" style="float:right" href="{% url 'cart' %}">Request Quotation</a></p>
-			{% include 'vendors/parts/modals/quotation_modal.html' %}
+			{% include 'accounts/parts/modals/quotation_modal.html' %}
 		</div>
 
 		<div class="card-footer  bg-white">

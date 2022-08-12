@@ -1,7 +1,6 @@
-from apps.store.models import Products, Services
 from django.shortcuts import render
 
-
+from apps.store.models import Products
 
 
 def homepage(request):

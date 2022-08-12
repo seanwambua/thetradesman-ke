@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .import views
+from . import views
 
 urlpatterns = [
 
@@ -11,6 +11,6 @@ urlpatterns = [
     path('signUp', views.sign_up, name="sign_up"),
 
     # Administration
-    path('administration', views.user_administration, name="AccountUser_admin"),
-    path('catalogUpdate', views.catalog_update, name="catalog_update"),
+    path('administration', views.user_administration, name="userAdministration"),
+    path('catalogUpdate', views.catalog_update, name="catalogUpdate"),
 ]
