@@ -1,7 +1,7 @@
-from decouple import config
 from email import message
 from pathlib import os, Path
 from re import S
+from decouple import config
 from django.contrib.messages import constants as message_constants
 
 config.encoding = config('ENCODING')
@@ -30,11 +30,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'apps.accounts',
     'apps.core',
+    'apps.accounts',
     'apps.store',
 
-    'bootstrap5'
+    "bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -72,7 +72,7 @@ WSGI_APPLICATION = 'tradeplatform.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': config('DB_ENGINE'),
+        'ENGINE':config('DB_ENGINE'),
         'HOST': config('DB_HOST'),
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),

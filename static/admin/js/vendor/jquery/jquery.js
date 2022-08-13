@@ -4215,7 +4215,7 @@ function fcamelCase( _all, letter ) {
 
 // Convert dashed to camelCase; used by the css and data modules
 // Support: IE <=9 - 11, Edge 12 - 15
-// Microsoft forgot to hump their UserAccount prefix (#9572)
+// Microsoft forgot to hump their AccountUser prefix (#9572)
 function camelCase( string ) {
 	return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase );
 }
@@ -6650,10 +6650,10 @@ var cssPrefixes = [ "Webkit", "Moz", "ms" ],
 	emptyStyle = document.createElement( "div" ).style,
 	AccountUserProps = {};
 
-// Return a UserAccount-prefixed property or undefined
+// Return a AccountUser-prefixed property or undefined
 function AccountUserPropName( name ) {
 
-	// Check for UserAccount prefixed names
+	// Check for AccountUser prefixed names
 	var capName = name[ 0 ].toUpperCase() + name.slice( 1 ),
 		i = cssPrefixes.length;
 
@@ -6665,7 +6665,7 @@ function AccountUserPropName( name ) {
 	}
 }
 
-// Return a potentially-mapped jQuery.cssProps or UserAccount prefixed property
+// Return a potentially-mapped jQuery.cssProps or AccountUser prefixed property
 function finalPropName( name ) {
 	var final = jQuery.cssProps[ name ] || AccountUserProps[ name ];
 
