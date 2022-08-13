@@ -1,0 +1,11 @@
+<div class="card-body">
+    <form class="form" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="field">
+            <div class="control">
+                <button class="btn btn-outline-primary" style="float:right"type="submit">Login</button>
+            </div>
+        </div>
+    </form>
+</div>

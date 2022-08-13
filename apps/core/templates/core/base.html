@@ -65,7 +65,7 @@
             </form>
 
             {% if request.user.is_superuser %}
-              <a class="btn btn-outline-dark my-sm-0" type="submit" style="margin-left:5%;" href="{% url 'vendor_admin' %}">Administration</a>
+              <a class="btn btn-outline-dark my-sm-0" type="submit" style="margin-left:5%;" href="{% url 'AccountUser_admin' %}">Administration</a>
             {% else %}
             <a class="btn bg-white m-2 my-sm-0" type="submit" href="{% url 'cart' %}">Cart <img src="https://img.icons8.com/material/24/000000/shopping-cart--v1.png"/></a> 
             {% endif %}

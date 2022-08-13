@@ -6,25 +6,31 @@
             <div class="flex">
                 <div class="row">
                     {% if not newest_products%}
-                
+
+                        <div class="card shadow p-1 mb-5 bg-white rounded" >    
+                            <p>No products available. Please update catalog.</p>
+                        </div>  
+
                     {% else %}
                         <h4>Newest Products</h4>
                         {% for product in newest_products %}
                             <div class="col-lg-4">
-                            {% include 'products/parts/list_item.html' %}
+                            {% include 'store/parts/products/list.html' %}
                             </div>
                         {% endfor %}   
                     {% endif %}                 
                 </div>
                 
                 {% if not latest_services%}
-
+                    <div class="card shadow p-1 mb-5 bg-white rounded" >    
+                        <p>No service packages available. Please update catalog.</p>
+                    </div>  
                 {% else %}
                     <div class="row">
                         <h5>Latest Services</h5>
                         {% for service in latest_services %}
                         <div class="col-lg-3">
-                            {% include 'services/parts/list_item.html' %}
+                            {% include 'store/parts/services/list.html' %}
                         </div>
                         {% endfor %}                    
                     </div>
@@ -38,7 +44,7 @@
                         <h5>Newest Ventures</h5>
                         {% for product in latest_ventures %}
                         <div class="col-lg-4">
-                            {% include 'products/parts/list_item.html' %}
+                            {% include 'products/parts/list.html' %}
                         </div>
                         {% endfor %}
                     </div>                    
