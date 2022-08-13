@@ -34,7 +34,7 @@ class Policy(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name_plural = 'Delivery Periods'
+        verbose_name_plural = 'Policies'
         ordering = ['slug']
 
     def __str__(self):
@@ -42,7 +42,7 @@ class Policy(models.Model):
 
 
 class DeliveryPeriod(models.Model):
-    title = models.CharField(max_length=255, default=0, null=False)
+    title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     ordering = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)
@@ -70,10 +70,6 @@ def make_thumbnail(image, size=(300, 200)):
 
 
 class Products(models.Model):
-    category = models.ForeignKey(Category, related_name="categories", on_delete=models.CASCADE)
-    product_provider = models.ForeignKey(UserAccount, related_name="product_provider", on_delete=models.CASCADE)
-    policy = models.ForeignKey(Policy, related_name="product_policy", on_delete=models.CASCADE)
-    delivery_frequency = models.ForeignKey(DeliveryPeriod, related_name="delivery_frequency", on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     description = models.TextField(blank=True, null=True)
@@ -84,6 +80,9 @@ class Products(models.Model):
     updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    category = models.ForeignKey(Category, related_name="categories", on_delete=models.CASCADE)
+    seller = models.ForeignKey(UserAccount, related_name="seller", on_delete=models.CASCADE)
+    product_policy = models.ForeignKey(Policy, related_name="product_policy", on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-created']  # Descending order
@@ -97,7 +96,7 @@ class Products(models.Model):
             return self.thumbnail.url
         else:
             if self.image:
-                self.thumbnail = tradesplatform.make_thumbnail(self.image)
+                self.thumbnail = make_thumbnail(self.image)
                 self.save()
                 return self.thumbnail.url
             else:
@@ -105,16 +104,17 @@ class Products(models.Model):
 
 
 class Services(models.Model):
-    category = models.ForeignKey(Category, related_name="services", on_delete=models.CASCADE)
-    service_provider = models.ForeignKey(UserAccount, related_name="service_provider", on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     description = models.TextField(blank=True, null=True)
-    hours = models.IntegerField(max_digits=2, default=0)
+    hours = models.IntegerField(default=0)
     price = models.DecimalField(max_digits=10, decimal_places=0)
     date_added = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    service_type = models.ForeignKey(Category, related_name="service_type", on_delete=models.CASCADE)
+    provider = models.ForeignKey(UserAccount, related_name="provider", on_delete=models.CASCADE)
+    service_policy = models.ForeignKey(Policy, related_name="service_policy", on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-date_added']  # Descending order

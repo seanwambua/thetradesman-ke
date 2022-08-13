@@ -11,7 +11,7 @@ class ProductsForm(ModelForm):
     class Meta:
         model = Products
         fields = [
-            'category',
+            'types',
             'image',
             'title',
             'description',
@@ -55,7 +55,7 @@ class CustomUserCreationForm(forms.Form):
         return confirmation_password
 
     def save(self):
-        user = User.objects.create_user(
+        user_account = User.objects.create_user(
             self.cleaned_data['username'],
             #  profile_photo = self.cleaned_data['profile_photo'],
             first_name=self.cleaned_data['first_name'],
@@ -63,4 +63,4 @@ class CustomUserCreationForm(forms.Form):
             email=self.cleaned_data['email'],
             password=self.cleaned_data['new_password'],
         )
-        return user
+        return user_account

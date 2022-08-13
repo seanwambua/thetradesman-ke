@@ -1,8 +1,7 @@
+from decouple import config
 from email import message
 from pathlib import os, Path
 from re import S
-
-from decouple import config
 from django.contrib.messages import constants as message_constants
 
 config.encoding = config('ENCODING')

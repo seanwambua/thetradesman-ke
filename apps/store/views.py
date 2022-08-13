@@ -10,23 +10,23 @@ from .models import Products, Services
 
 class ProductDetailView(DetailView):
     model = Products
-    context_object_name = 'product'
-    template_name = 'products/product.html'
+    context = 'product'
+    template_name = 'store/parts/products/detail.html'
 
 
 class ProductDeleteView(DeleteView):
     model = Products
-    success_url = "AccountUser_admin"
+    success_url = "userAdministration"
 
 
 # --------------- SERVICES --------------------------------------------
 
 class ServiceDetailView(DetailView):
     model = Services
-    context_object_name = 'service'
-    template_name = 'services/services.html'
+    context = 'service'
+    template_name = 'store/parts/products/detail'
 
 
 class ServiceDeleteView(DeleteView):
     model = Services
-    success_url = "vendor_admin"
+    success_url = "userAdministration"

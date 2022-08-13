@@ -42,9 +42,9 @@ def sign_up(request):
 
 @login_required
 def user_administration(request):
-    AccountUser = request.user.AccountUser
-    products = AccountUser.products.all()
-    return render(request, 'accounts/userAdministration.html', {'UserAccount': AccountUser, 'products': products})
+    account = request.user.user
+    products = account.products.all()
+    return render(request, 'accounts/userAdministration.html', {'UserAccount': account, 'products': products})
 
 
 @login_required

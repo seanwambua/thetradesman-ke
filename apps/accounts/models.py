@@ -17,7 +17,7 @@ class UserRole(models.Model):
 
 
 class UserAccount(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=40)
     first_name = models.CharField(max_length=255, null=True, blank=True)
     last_name = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField(max_length=255, null=True, blank=True)

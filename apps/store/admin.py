@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from apps.store.models import Category, DeliveryPeriod, Policy, Products
+from apps.store.models import Category, DeliveryPeriod, Policy, Products, Services
 
 
 @admin.register(Category)
@@ -17,7 +17,16 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ['in_stock', 'is_active']
     list_editable = ['title', 'description', 'price', ]
 
+"""
+@admin.register(Services)
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = ['title', 'slug', 'description', 'hours', 'price', 'created', 'updated']
+    list_display_links = ['slug']
+    prepopulated_fields = {'slug': ('title',)}
+    list_filter = ['in_stock', 'is_active']
+    list_editable = ['title', 'description', 'price', ]
 
+"""
 @admin.register(DeliveryPeriod)
 class DeliveryPeriodAdmin(admin.ModelAdmin):
     list_display = ['title', 'slug']
