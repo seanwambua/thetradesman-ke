@@ -1,6 +1,0 @@
-# MODELS
-
-
-
-# VIEWS
-

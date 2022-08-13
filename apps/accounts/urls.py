@@ -4,9 +4,9 @@ from .import views
 
 urlpatterns = [
 
-    # User Accounts    
-    path('login', views.AccountUserLoginView.as_view(), name="login"),
-    path('logout', views.AccountUserLogoutView.as_view(), name="logout"),
+    # CustomUser Accounts
+    path('login', views.CustomUserLoginView.as_view(), name="login"),
+    path('logout', views.CustomUserLogoutView.as_view(), name="logout"),
     path('stores', views.AccountUserListView.as_view(), name="stores"),
     path('signUp', views.sign_up, name="sign_up"),
 

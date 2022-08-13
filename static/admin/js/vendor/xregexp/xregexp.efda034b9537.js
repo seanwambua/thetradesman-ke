@@ -1791,7 +1791,7 @@ module.exports = function(XRegExp) {
 
     /**
      * Adds support for Unicode's general categories. E.g., `\p{Lu}` or `\p{Uppercase Letter}`. See
-     * types descriptions in UAX #44 <http://unicode.org/reports/tr44/#GC_Values_Table>. Token
+     * category descriptions in UAX #44 <http://unicode.org/reports/tr44/#GC_Values_Table>. Token
      * names are case insensitive, and any spaces, hyphens, and underscores are ignored.
      *
      * Uses Unicode 9.0.0.
@@ -2115,7 +2115,7 @@ module.exports = function(XRegExp) {
     // Add non-generated data
     unicodeData.push({
         name: 'Assigned',
-        // Since this is defined as the inverse of Unicode types Cn (Unassigned), the Unicode
+        // Since this is defined as the inverse of Unicode category Cn (Unassigned), the Unicode
         // Categories addon is required to use this property
         inverseOf: 'Cn'
     });
@@ -3064,12 +3064,12 @@ function isPatternNext(pattern, pos, flags, needlePattern) {
 }
 
 /**
- * Determines whether a value is of the specified type, by resolving its internal [[Class]].
+ * Determines whether a value is of the specified role, by resolving its internal [[Class]].
  *
  * @private
  * @param {*} value Object to check.
  * @param {String} type Type to check for, in TitleCase.
- * @returns {Boolean} Whether the object matches the type.
+ * @returns {Boolean} Whether the object matches the role.
  */
 function isType(value, type) {
     return toString.call(value) === '[object ' + type + ']';
@@ -3393,7 +3393,7 @@ XRegExp.prototype = new RegExp();
  *
  * @static
  * @memberOf XRegExp
- * @type String
+ * @role String
  */
 XRegExp.version = '3.2.0';
 
@@ -4285,7 +4285,7 @@ fixed.replace = function(search, replacement) {
     // Don't use `typeof`; some older browsers return 'function' for regex objects
     if (isType(replacement, 'Function')) {
         // Stringifying `this` fixes a bug in IE < 9 where the last argument in replacement
-        // functions isn't type-converted to a string
+        // functions isn't role-converted to a string
         result = nativ.replace.call(String(this), search, function() {
             var args = arguments;
             var i;

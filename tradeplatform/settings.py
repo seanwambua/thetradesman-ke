@@ -109,6 +109,6 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
-# Default primary key field type
+# Default primary key field role
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

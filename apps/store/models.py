@@ -4,15 +4,13 @@ from PIL import Image
 from django.core.files import File
 from django.db import models
 
-from apps.accounts.models import UserAccount
+from apps.accounts.models import CustomUser
 
 
 class Category(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     ordering = models.IntegerField(default=0)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name_plural = 'Categories'
@@ -28,13 +26,12 @@ class Policy(models.Model):
     description = models.CharField(max_length=255)
     service_terms = models.CharField(max_length=255)
     payment_terms = models.CharField(max_length=255)
-    policy_author = models.ForeignKey(UserAccount, related_name="policy_author", on_delete=models.CASCADE)
     ordering = models.IntegerField(default=0)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    policy_author = models.ForeignKey(CustomUser, related_name="policy_author", on_delete=models.CASCADE)
+    policy_category = models.ForeignKey(Category, related_name="policy_category", on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name_plural = 'Policies'
+        verbose_name_plural = 'Delivery Periods'
         ordering = ['slug']
 
     def __str__(self):
@@ -42,11 +39,9 @@ class Policy(models.Model):
 
 
 class DeliveryPeriod(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, default=0, null=False)
     slug = models.SlugField(max_length=255)
     ordering = models.IntegerField(default=0)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name_plural = 'Delivery Periods'
@@ -80,9 +75,10 @@ class Products(models.Model):
     updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
-    category = models.ForeignKey(Category, related_name="categories", on_delete=models.CASCADE)
-    seller = models.ForeignKey(UserAccount, related_name="seller", on_delete=models.CASCADE)
-    product_policy = models.ForeignKey(Policy, related_name="product_policy", on_delete=models.CASCADE)
+    product_category = models.ForeignKey(Category, related_name="product_category", on_delete=models.CASCADE)
+    seller = models.ForeignKey(CustomUser, related_name="seller", on_delete=models.CASCADE)
+    policy = models.ForeignKey(Policy, related_name="product_policy", on_delete=models.CASCADE)
+    delivery_frequency = models.ForeignKey(DeliveryPeriod, related_name="delivery_frequency", on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-created']  # Descending order
@@ -104,17 +100,16 @@ class Products(models.Model):
 
 
 class Services(models.Model):
+    service_category = models.ForeignKey(Category, related_name="service_category", on_delete=models.CASCADE)
+    service_provider = models.ForeignKey(CustomUser, related_name="service_provider", on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     description = models.TextField(blank=True, null=True)
-    hours = models.IntegerField(default=0)
     price = models.DecimalField(max_digits=10, decimal_places=0)
     date_added = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
-    service_type = models.ForeignKey(Category, related_name="service_type", on_delete=models.CASCADE)
-    provider = models.ForeignKey(UserAccount, related_name="provider", on_delete=models.CASCADE)
-    service_policy = models.ForeignKey(Policy, related_name="service_policy", on_delete=models.CASCADE)
+    is_active = models.BooleanField()
 
     class Meta:
         ordering = ['-date_added']  # Descending order
