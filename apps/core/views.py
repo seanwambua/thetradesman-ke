@@ -3,10 +3,10 @@ from django.shortcuts import render
 from apps.store.models import Products, Services
 
 
-def homepage(request):
-    latest_services = Services.objects.filter(service_category=0)[0:6]
-    newest_products = Products.objects.filter(product_category=0)[0:6]
-    return render(request, 'core/home.html', {'newest_products': newest_products, 'latest_services': latest_services})
+def latest_additions(request):
+    latest_services = Services.objects.all()[0:6]
+    latest_products = Products.objects.all()[0:6]
+    return render(request, 'core/home.html', {'latest_products': latest_products, 'latest_services': latest_services})
 
 
 def contact(request):
