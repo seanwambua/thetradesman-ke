@@ -1,0 +1,26 @@
+<div class="card shadow p-2 mb-4 bg-white rounded">
+    <div class="card-image">
+        <figure class="">
+            <img class="rounded mx-auto d-block img-fliud  rounded-circle"
+                 src="https://bulma.io/images/placeholders/96x90.png" alt="{{ product.CustomUser }} logo">
+        </figure>
+    </div>
+
+    <div class="card-body">
+        <h5 class="card-title">Name: {{ CustomUser.first_name }} {{ CustomUser.last_name }}</h5>
+        <p class="card-text">Description: {{ CustomUser.intro }}</p>
+        <p class="card-text">Email: {{ CustomUser.email }}</p>
+        <a class="btn btn-primary" href="{% url 'cart' %}">Visit Store</a>
+    </div>
+
+    <div class="card-footer bg-white" style="font-size:14px">
+        <a>@{{ CustomUser.name }}</a>.
+        <a href="#">#tradesman</a> <a href="#">#store</a>
+        <br>
+        {% if user.is_superuser %}
+            <date date="2016-1-1">Joined: {{ CustomUser.date_time_created }}</date>
+        {% endif %}
+    </div>
+</div>
+
+

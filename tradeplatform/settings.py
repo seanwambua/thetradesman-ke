@@ -1,6 +1,7 @@
 from email import message
 from pathlib import os, Path
 from re import S
+
 from decouple import config
 from django.contrib.messages import constants as message_constants
 
@@ -72,7 +73,7 @@ WSGI_APPLICATION = 'tradeplatform.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE':config('DB_ENGINE'),
+        'ENGINE': config('DB_ENGINE'),
         'HOST': config('DB_HOST'),
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
@@ -111,4 +112,3 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 
 # Default primary key field role
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-

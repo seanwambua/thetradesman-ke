@@ -10,7 +10,7 @@
             <h5 class="card-title" style="text-align:center">{{service.title}} </h5>
 
             <div class="card-body">
-                <a   class="btn btn-dark mx-auto d-block"  style=" font-size:14px" href="{% url 'service' service.category.slug service.pk %}">View {{service.category}} package</a>
+                <a   class="btn btn-dark mx-auto d-block"  style=" font-size:14px" href="{% url 'service' service.service_category.slug service.pk %}">View {{service.service_category}} package</a>
             </div>
             
 

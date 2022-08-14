@@ -31,11 +31,11 @@ class Policy(models.Model):
     policy_category = models.ForeignKey(Category, related_name="policy_category", on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name_plural = 'Delivery Periods'
+        verbose_name_plural = 'Policies'
         ordering = ['slug']
 
     def __str__(self):
-        return self.title
+        return self.slug
 
 
 class DeliveryPeriod(models.Model):
@@ -75,10 +75,12 @@ class Products(models.Model):
     updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
-    product_category = models.ForeignKey(Category, related_name="product_category", on_delete=models.CASCADE)
-    seller = models.ForeignKey(CustomUser, related_name="seller", on_delete=models.CASCADE)
-    policy = models.ForeignKey(Policy, related_name="product_policy", on_delete=models.CASCADE)
-    delivery_frequency = models.ForeignKey(DeliveryPeriod, related_name="delivery_frequency", on_delete=models.CASCADE)
+    product_category = models.ForeignKey(Category, related_name="product_category", default="default",
+                                         on_delete=models.CASCADE)
+    seller = models.ForeignKey(CustomUser, related_name="seller", default="default", on_delete=models.CASCADE)
+    policy = models.ForeignKey(Policy, related_name="product_policy", default="default", on_delete=models.CASCADE)
+    delivery_frequency = models.ForeignKey(DeliveryPeriod, related_name="delivery_frequency", default="default",
+                                           on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-created']  # Descending order
