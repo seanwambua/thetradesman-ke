@@ -77,8 +77,8 @@ class Products(models.Model):
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
     product_category = models.ForeignKey(Category, related_name="product_category", default="default",
                                          on_delete=models.CASCADE)
-    seller = models.ForeignKey(CustomUser, related_name="seller", default="default", on_delete=models.CASCADE)
-    policy = models.ForeignKey(Policy, related_name="product_policy", default="default", on_delete=models.CASCADE)
+    seller = models.ForeignKey(CustomUser, related_name="seller", default=1, on_delete=models.CASCADE)
+    policy = models.ForeignKey(Policy, related_name="product_policy", default=1, on_delete=models.CASCADE)
     delivery_frequency = models.ForeignKey(DeliveryPeriod, related_name="delivery_frequency", default="default",
                                            on_delete=models.CASCADE)
 
@@ -102,8 +102,6 @@ class Products(models.Model):
 
 
 class Services(models.Model):
-    service_category = models.ForeignKey(Category, related_name="service_category", on_delete=models.CASCADE)
-    service_provider = models.ForeignKey(CustomUser, related_name="service_provider", on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     description = models.TextField(blank=True, null=True)
@@ -112,6 +110,12 @@ class Services(models.Model):
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
     is_active = models.BooleanField()
+    service_category = models.ForeignKey(Category, related_name="service_category", on_delete=models.CASCADE)
+    service_provider = models.ForeignKey(CustomUser, related_name="service_provider", on_delete=models.CASCADE)
+
+    # policy = models.ForeignKey(Policy, related_name="services_policy", default=1, on_delete=models.CASCADE)
+    # delivery_frequency = models.ForeignKey(DeliveryPeriod, related_name="service_delivery", default=1,
+    #                                       on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-date_added']  # Descending order

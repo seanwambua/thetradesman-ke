@@ -96,3 +96,4 @@ class CustomUserListView(ListView):
     paginate_by: 2
     context_object_name = 'accounts_list'
     template_name = 'accounts/list.html'
+
