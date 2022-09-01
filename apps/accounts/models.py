@@ -32,7 +32,7 @@ def make_thumbnail(image, size=(300, 200)):
 
 
 class CustomUser(models.Model):
-    role = models.ForeignKey(UserRole, related_name="roles",default="default", on_delete=models.CASCADE)
+    role = models.ForeignKey(UserRole, related_name="roles", default="default", on_delete=models.CASCADE)
     django_user = models.OneToOneField(User, related_name='user', on_delete=models.CASCADE)
     name = models.CharField(max_length=20)
     first_name = models.CharField(max_length=255, null=True, blank=True)
@@ -50,3 +50,6 @@ class CustomUser(models.Model):
 
     def __str__(self):
         return self.name
+
+
+

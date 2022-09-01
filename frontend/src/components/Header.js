@@ -8,10 +8,10 @@ function Header() {
       
       <Navbar bg="light" variant="light" expand="lg">
 
-        <Container fluid>
+        <Container className="container-fluid">
 
           <LinkContainer to='/'>
-            <Navbar.Brand href="#">Tradesman KE</Navbar.Brand>
+            <Navbar.Brand href="#"><h3>Tradesman KE</h3></Navbar.Brand>
           </LinkContainer>
 
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -22,7 +22,7 @@ function Header() {
 
               <Nav.Link href="About" disabled> Link</Nav.Link>
 
-              <LinkContainer to='/cart'>
+              <LinkContainer to='/cart' className="justify-content-end">
                 <Nav.Link> Cart <i className='fas fa-shopping-cart'></i></Nav.Link>
               </LinkContainer>
 

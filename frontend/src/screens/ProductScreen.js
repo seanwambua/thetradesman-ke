@@ -1,74 +1,100 @@
-import React from 'react'
-import {Link, useParams} from 'react-router-dom'
-import {Row, Col, Image, ListGroup, Card} from 'react-bootstrap'
+import React, {useEffect, useState} from 'react'
+import {useParams} from 'react-router-dom'
+import {Card, Col, ListGroup, Row} from 'react-bootstrap'
 import Rating from '../components/Rating'
-import products from '../products'
+import axios from "axios";
 
-function ProductScreen() {
-  const {id} = useParams()
-  const product = products.find((p)=>p._id ===id)
-  return (
-    <div>
-      <Link to='/'className="btn btn-light my-3 border-0"> Go back</Link>
-     
-      <Row>
-        <Col md={6}>
-          <Image src={product.image} alt={product.name} fluid />
-        </Col>
 
-        <Col md={3}>
-          <ListGroup variant='flush'>
-          <ListGroup.Item>
-              <h3>{product.name}</h3>
-            </ListGroup.Item>
+function ProductScreen(props) {
+    const {id} = useParams()
+    const [product, setProduct] = useState([])
 
-            <ListGroup.Item>
-              <Rating value={product.rating} color='#8885e6' text={`${product.numReviews} reviews`}/>
-            </ListGroup.Item>
+    useEffect(() => {
 
-            <ListGroup.Item>
-              Price: Ksh. {product.price*100}
-            </ListGroup.Item>
+        async function fetchProduct() {
+            const {data} = await axios.get(`/api/products/${id}`)
+            setProduct(data)
+        }
 
-            <ListGroup.Item>
-              Description {product.description}
-            </ListGroup.Item>
-          </ListGroup>
-        </Col>
-
-        <Col md={3}>
-          <Card className="shadow border-0 py-3">
-          <ListGroup variant='flush'>
-            <ListGroup.Item>
-              <Row>
-                <Col>
-                  Price: 
+        fetchProduct().then()
+    }, []);
+    return (
+        <div>
+            <Row className="mt-4 py-3">
+                <Col md={6}>
+                    <Card.Img src={product.image} alt={product.title} className="shadow border-0"/>
                 </Col>
-                <Col>
-                  <strong>Ksh. {product.price * 100}</strong>
-                </Col>
-              </Row>              
-            </ListGroup.Item>
-          </ListGroup>
 
-          <ListGroup variant='flush'>
-            <ListGroup.Item>
-              <Row>
-                <Col>
-                  Status:
+                <Col md={4}>
+                    <Card className="border-0 py-3">
+                        <ListGroup variant='flush'>
+
+                            <ListGroup.Item>
+                                <h3>{product.title}</h3>
+                            </ListGroup.Item>
+
+                            <ListGroup.Item>
+                                Description {product.description}
+                            </ListGroup.Item>
+                        </ListGroup>
+                    </Card>
+
+                    <Card className="border-0 py-0">
+                        <ListGroup variant='flush'>
+                            <ListGroup.Item>
+                                <Row>
+                                    <Col>
+                                        Price:
+                                    </Col>
+                                    <Col>
+                                        <strong>Ksh. {product.price}</strong>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+                        </ListGroup>
+
+                        <ListGroup variant='flush'>
+                            <ListGroup.Item>
+                                <Row>
+                                    <Col>
+                                        Status:
+                                    </Col>
+                                    <Col>
+                                        {product.stock_count > 0 ? 'In Stock' : 'Out of Stock'}
+                                    </Col>
+
+                                </Row>
+                            </ListGroup.Item>
+
+                            <ListGroup variant='flush'>
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col>
+                                            Rating:
+                                        </Col>
+                                        <Col>
+                                            <Rating value={product.rating} color='#8885e6'/>
+                                        </Col>
+                                    </Row>
+                                </ListGroup.Item>
+                            </ListGroup>
+                        </ListGroup>
+                    </Card>
                 </Col>
-                <Col>
-                  {product.countInStock>0 ? 'In Stock' : 'Out of Stock'}
+
+                <Col md={2}>
+                    <Card className="border-0 py-3">
+                        <ListGroup variant='flush'>
+
+                            <ListGroup.Item>
+                                <button type="submit" className="btn btn-secondary">Add to Cart</button>
+                            </ListGroup.Item>
+                        </ListGroup>
+                    </Card>
                 </Col>
-              </Row>              
-            </ListGroup.Item>
-          </ListGroup>
-          </Card>
-        </Col>
-        
-      </Row>
-    </div>
-  )
+            </Row>
+        </div>
+    )
 }
 
 export default ProductScreen
