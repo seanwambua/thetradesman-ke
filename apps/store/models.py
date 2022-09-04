@@ -13,7 +13,6 @@ class Brand(models.Model):
     ordering = models.IntegerField(default=0)
 
     class Meta:
-        verbose_name_plural = 'Categories'
         ordering = ['slug']
 
     def __str__(self):
