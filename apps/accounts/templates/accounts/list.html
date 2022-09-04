@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+
+    {% block title %} Welcome | Tradesman {% endblock %}
+
+            {% block content %}
+
+            <h4 class="m-1"> Availabe Stores: </h4><br>
+
+            <div class="flex d-flex">
+                <div class="row">
+                    {% for AccountUser in AccountUsers %}
+                    <div class="col-lg-4">
+                          {% include 'accounts/parts/profile.html' %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            {% endblock %}
+
+
+            

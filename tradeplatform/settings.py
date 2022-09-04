@@ -1,6 +1,7 @@
 from email import message
 from pathlib import os, Path
 from re import S
+
 from decouple import config
 from django.contrib.messages import constants as message_constants
 
@@ -30,14 +31,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'apps.core',
+
     'apps.accounts',
     'apps.store',
+    'apps.api',
 
+    "corsheaders",
     "bootstrap5",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -72,12 +78,8 @@ WSGI_APPLICATION = 'tradeplatform.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE':config('DB_ENGINE'),
-        'HOST': config('DB_HOST'),
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'PORT': config('DB_PORT'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -112,3 +114,4 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 # Default primary key field role
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CORS_ALLOW_ALL_ORIGINS = True

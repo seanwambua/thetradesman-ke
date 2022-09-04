@@ -1,90 +1,104 @@
-<div class="col-lg-4">
-	<div class="card shadow p-4 mb-4 bg-white rounded" >
-		<div class="card-image">
-			<figure>
-				{% if service.image %}
-					<img  class="mx-auto d-block img-fluid img-thumbnail" src="{{service.image.url}}">		
-				{% endif %}
-			</figure>
-			<p>Tradesman Rating: </p>
-		</div>
-	</div>
-</div>
+{% extends 'core/base.html' %}
 
-<div class="col-lg-8">
-	<div class="card shadow p-4 mb-4 bg-white rounded" >
-		<div class="card-header bg-white">
-			<h4>{{ service.title}} </h4>
-		</div>
+{% block title %} Welcome | Tradesman {% endblock %}
 
-		<div class="card-body">
-			<p class="mb-6">Price: Ksh. {{service.price}}</p>
-			<p class="mb-6">Summary:{{service.description}}</p>
-			<a  class="btn btn-primary" href="{% url 'cart' %}">Hire {{service.vendor.first_name}}</a>
-			<a  class="btn btn-outline-dark"  data-bs-toggle="modal" data-bs-target="#myModal" style="float:right" href="{% url 'cart' %}">Request Quotation</a></p>
-			{% include 'vendors/parts/modals/quotation_modal.html' %}
-		</div>
+{% block content %}
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card shadow p-4 mb-4 bg-white rounded">
+                <div class="card-image">
+                    <figure>
+                        {% if service.image %}
+                            <img class="mx-auto d-block img-fluid img-thumbnail" src="{{ service.image.url }}">
+                        {% endif %}
+                    </figure>
+                    <p>Tradesman Rating: </p>
+                </div>
+            </div>
+        </div>
 
-		<div class="card-footer  bg-white">
-			Merchant: <a href="#">{{service.vendor}}</a>
-			<span style="float:right">category:<a style="float:right" href="#">{{service.category}}</a></span>
-		</div>
-	</div>
-</div>
+        <div class="col-lg-8">
+            <div class="card shadow p-4 mb-4 bg-white rounded">
+                <div class="card-header bg-white">
+                    <h4>{{ service.title }} </h4>
+                </div>
 
-<div class="col-lg-12">
-	<div class="card shadow p-4 mb-4 bg-white rounded" >	
-		<div stye="float:right">
-			<div class="card-header bg-white">
-				<h4>Package Description</h4>
-			</div>
-	
-			<div class="card-body">
-				<ol>
-					<li class="mb-6">Delivery Period: 1-4 days</li>
-				</ol>
-				<hr>
-				<h6 class="mb-6">Payment Terms</h6>
-				<ul>
-					<li class="mb-6">75% Upfront</li>
-					<li class="mb-6">25% On Completion</li>
-				</ul>
-			</div>
-	
-			<div class="card-footer">
-				<p>This {{service.category}} is covered by the following Tradesman Policies; </p>
-				<a href="#"> Payment Protection Policy</a><br>
-				<a href="#"> Data Protection Policy</a>
-			</div>
-		</div>
-	</div>
-</div>
-		
+                <div class="card-body">
+                    <p class="mb-6">Price: Ksh. {{ service.price }}</p>
+                    <p class="mb-6">Summary:{{ service.description }}</p>
+                    <a class="btn btn-primary"
+                       href="./hire.html">Hire {{ service.service_provider.first_name }}</a>
+                    <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#myModal" style="float:right"
+                       href="{% url 'cart' %}">Request Quotation</a>
+                    {% include 'accounts/parts/modals/quotation_modal.html' %}
+                </div>
 
-<div class="col-lg-12">
-	<div class="card shadow p-4 mb-4 bg-white rounded" >	
-		<div stye="float:right">
-			<div class="card-header">
-				<h4>Merchant Terms</h4>
-			</div>
-	
-			<div class="card-body">
-				<ol>
-					<li class="mb-6">Delivery Period: 1-4 days</li>
-				</ol>
-				<hr>
-				<h6 class="mb-6">Payment Terms</h6>
-				<ul>
-					<li class="mb-6">75% Upfront</li>
-					<li class="mb-6">25% On Completion</li>
-				</ul>
-			</div>
-	
-			<div class="card-footer">
-				<p>This {{service.category}} is covered by the following Tradesman Policies; </p>
-				<a href="#"> Payment Protection Policy</a><br>
-				<a href="#"> Data Protection Policy</a>
-			</div>
-		</div>
-	</div>
-</div>
+                <div class="card-footer  bg-white">
+                    Merchant: <a href="#">{{ service.service_provider }}</a>
+                    <span style="float:right">category:<a style="float:right"
+                                                          href="#">{{ service.service_category }}</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card shadow p-4 mb-4 bg-white rounded">
+                <div style="float:right">
+                    <div class="card-header bg-white">
+                        <h4>Package Description</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <ol>
+                            <li class="mb-6">Delivery Period: 1-4 days</li>
+                        </ol>
+                        <hr>
+                        <h6 class="mb-6">Payment Terms</h6>
+                        <ul>
+                            <li class="mb-6">75% Upfront</li>
+                            <li class="mb-6">25% On Completion</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-footer">
+                        <p>This {{ service.service_category }} is covered by the following Tradesman Policies; </p>
+                        <a href="#"> Payment Protection Policy</a><br>
+                        <a href="#"> Data Protection Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card shadow p-4 mb-4 bg-white rounded">
+                <div style="float:right">
+                    <div class="card-header">
+                        <h4>Service Terms</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <ol>
+                            <li class="mb-6">Delivery Period: 1-4 days</li>
+                        </ol>
+                        <hr>
+                        <h6 class="mb-6">Payment Terms</h6>
+                        <ul>
+                            <li class="mb-6">75% Upfront</li>
+                            <li class="mb-6">25% On Completion</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-footer">
+                        <p>This {{ service.service_category }} is covered by the following Tradesman Policies; </p>
+                        <a href="#"> Payment Protection Policy</a><br>
+                        <a href="#"> Data Protection Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
