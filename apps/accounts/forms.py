@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 
-from apps.store.models import Products. Services
+from apps.store.models import Products
 
 
 class ProductsForm(ModelForm):
