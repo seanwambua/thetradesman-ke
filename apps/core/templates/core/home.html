@@ -35,20 +35,6 @@
                         {% endfor %}                    
                     </div>
                 {% endif %}
-
-                
-                {% if not latest_ventures%}
-                    
-                {% else %}
-                    <div class="row">                
-                        <h5>Newest Ventures</h5>
-                        {% for product in latest_ventures %}
-                        <div class="col-lg-4">
-                            {% include 'products/parts/list.html' %}
-                        </div>
-                        {% endfor %}
-                    </div>                    
-                {% endif %}
                     
                 </div>
             </div>

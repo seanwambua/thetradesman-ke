@@ -12,5 +12,5 @@ urlpatterns = [
 
     path('api/products/', views.getProducts, name='products'),
     path('api/products/<int:pk>', views.getProduct, name='product'),
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
 ]

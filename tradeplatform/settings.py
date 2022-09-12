@@ -34,11 +34,12 @@ INSTALLED_APPS = [
     'apps.accounts',
     'apps.store',
     'apps.api',
+    'apps.core',
 
     "corsheaders",
     "bootstrap5",
     "rest_framework",
-    "cart",
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -120,9 +121,7 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 # Default primary key field role
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000'
-]
+CORS_ORIGIN_ALLOW = '*'
 
 
 CART_SESSION_ID = 'cart'

@@ -19,7 +19,10 @@
 		<div class="card-body">
 			<p class="mb-6">Price: Ksh. {{product.price}}</p>
 			<p class="mb-6">Summary:{{product.description}}</p>
-			<a data-product={{product.id}} data-action="add" class="btn btn-primary update-cart" href="#"> Add to Cart</a>
+
+			<a href="{% url 'cart_add' product.id %}">Add To Cart</a>
+			<a href="{% url 'cart_clear' %}">Clear Cart</a>
+			
 		</div>
 
 		<div class="card-footer  bg-white">
