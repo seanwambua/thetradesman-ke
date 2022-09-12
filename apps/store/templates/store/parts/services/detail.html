@@ -30,6 +30,10 @@
                        href="./hire.html">Hire {{ service.service_provider.first_name }}</a>
                     <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#myModal" style="float:right"
                        href="{% url 'cart' %}">Request Quotation</a>
+                       <a href="{% url 'cart_add' product.id %}">Add To Cart</a>
+<a href="{% url 'cart_clear' %}">Clear Cart</a>
+<a href="{% url 'item_increment' value.product_id %}">Increament</a>
+<a href="{% url 'item_decrement' value.product_id %}">Decrement</a>
                     {% include 'accounts/parts/modals/quotation_modal.html' %}
                 </div>
 

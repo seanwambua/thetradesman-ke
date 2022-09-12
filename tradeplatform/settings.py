@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-
     'apps.accounts',
     'apps.store',
     'apps.api',
@@ -39,6 +38,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "bootstrap5",
     "rest_framework",
+    "cart",
 ]
 
 MIDDLEWARE = [
@@ -67,12 +67,18 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'cart.context_processor.cart_total_amount',
             ],
         },
     },
 ]
 
 MESSAGE_LEVEL = message_constants.DEBUG
+
+
+
+
 
 WSGI_APPLICATION = 'tradeplatform.wsgi.application'
 
@@ -114,4 +120,9 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 # Default primary key field role
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_WHITELIST = [
+     'http://localhost:3000'
+]
+
+
+CART_SESSION_ID = 'cart'

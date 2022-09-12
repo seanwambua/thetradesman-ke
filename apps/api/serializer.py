@@ -15,7 +15,7 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ServiceSerializer(serializers.ModelSerializer):
+class ServicesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Services
         fields = "__all__"
@@ -24,4 +24,4 @@ class ServiceSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = "__all__"
+        fields = "name"

@@ -1,29 +1,48 @@
-from django.views.generic import DetailView, DeleteView
-
-from .models import Products, Services
-
-
-# --------------- PRODUCTS --------------------------------------------
-
-class ProductDetailView(DetailView):
-    model = Products
-    context_object_name = 'product'
-    template_name = 'store/parts/products/detail.html'
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from cart.cart import Cart
+from .models import Products,Services
 
 
-class ProductDeleteView(DeleteView):
-    model = Products
-    success_url = "userAdministration"
+# --------------- CART --------------------------------------------
+
+def cart_add(request, id):
+    cart = Cart(request)
+    product = Products.objects.get(id=id)
+    service = Services.object.get(id=id)
+    cart.add(product=product)
+    return redirect("home")
 
 
-# --------------- SERVICES --------------------------------------------
+def item_clear(request, id):
+    cart = Cart(request)
+    product = Products.objects.get(id=id)
+    service = Services.object.get(id=id)
+    cart.remove(product)
+    return redirect("cart_detail")
 
-class ServiceDetailView(DetailView):
-    model = Services
-    context_object_name = 'service'
-    template_name = 'store/parts/services/detail.html'
+
+def item_increment(request, id):
+    cart = Cart(request)
+    product = Products.objects.get(id=id)
+    service = Services.object.get(id=id)
+    cart.add(product=product)
+    return redirect("cart_detail")
 
 
-class ServiceDeleteView(DeleteView):
-    model = Services
-    success_url = "userAdministration"
+def item_decrement(request, id):
+    cart = Cart(request)
+    product = Products.objects.get(id=id)
+    service = Services.object.get(id=id)
+    cart.decrement(product=product)
+    return redirect("cart_detail")
+
+
+def cart_clear(request):
+    cart = Cart(request)
+    cart.clear()
+    return redirect("cart_detail")
+
+
+def cart_detail(request):
+    return render(request, 'cart/cart_detail.html')

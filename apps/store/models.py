@@ -36,8 +36,7 @@ class Policy(models.Model):
     title = models.CharField(max_length=255, null=True)
     slug = models.SlugField(max_length=255)
     description = models.CharField(max_length=255)
-    service_terms = models.CharField(max_length=255)
-    payment_terms = models.CharField(max_length=255)
+    service_terms = models.TextField(max_length=255)
     ordering = models.IntegerField(default=0)
     policy_author = models.ForeignKey(CustomUser, related_name="policy_author", on_delete=models.CASCADE)
     policy_category = models.ForeignKey(Category, related_name="policy_category", on_delete=models.CASCADE)
@@ -80,7 +79,7 @@ class Products(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     description = models.TextField(blank=True, null=True)
-    price = models.DecimalField(max_digits=10, decimal_places=0)
+    price = models.FloatField(default=0 )
     stock_count = models.IntegerField(null=True, blank=True, default=0)
     is_active = models.BooleanField(default=True)
     review_count = models.IntegerField(default=0)
@@ -95,9 +94,9 @@ class Products(models.Model):
                                          on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, related_name="brand", null=True, on_delete=models.CASCADE)
     seller = models.ForeignKey(CustomUser, related_name="seller", default=1, on_delete=models.CASCADE)
-    policy = models.ForeignKey(Policy, related_name="product_policy", default=1, on_delete=models.CASCADE)
+    policy = models.ForeignKey(Policy, related_name="product_policy", blank=True,null=True, on_delete=models.SET_NULL )
     delivery_frequency = models.ForeignKey(DeliveryPeriod, related_name="delivery_frequency", default="default",
-                                           on_delete=models.CASCADE)
+                                           on_delete=models.SET_DEFAULT)
 
     class Meta:
         ordering = ['-created']  # Descending order
@@ -122,7 +121,7 @@ class ProductReview(models.Model):
     rating = models.IntegerField(null=True, blank=True, default=0)
     comment = models.TextField(null=True, blank=True)
     createdAt = models.DateTimeField(auto_now_add=True)
-    product = models.ForeignKey(Products, related_name="product_review", on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Products, related_name="product_review",null=False, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, related_name="product_customer", on_delete=models.CASCADE)
 
     def __str__(self):
@@ -142,7 +141,7 @@ class Services(models.Model):
     # ----------- FOREIGN KEYS -------------------------
     service_category = models.ForeignKey(Category, related_name="service_category", on_delete=models.CASCADE)
     service_provider = models.ForeignKey(CustomUser, related_name="service_provider", on_delete=models.CASCADE)
-    policy = models.ForeignKey(Policy, related_name="services_policy", default=1, on_delete=models.CASCADE)
+    policy = models.ForeignKey(Policy, related_name="services_policy", blank=True,null=True, on_delete=models.SET_NULL)
     delivery_frequency = models.ForeignKey(DeliveryPeriod, related_name="service_delivery",
                                            default="Same Week Delivery", on_delete=models.CASCADE)
 

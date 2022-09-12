@@ -1,28 +1,24 @@
-from django.db.models import Count
+from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from apps.store.models import Products, ProductReview
-from .serializer import ProductSerializer
+from apps.store.models import Products, Services, Policy
+from .serializer import ProductSerializer, ServicesSerializer, PolicySerializer
 
 
-# from .products import products
+class ProductsView(viewsets.ModelViewSet):
+    serializer_class = ProductSerializer
+    queryset = Products.objects.all()
 
 
-@api_view(['GET'])
-def getRoutes(request):
-    routes = [
-        "/api/products/",
-        "/api/products/create",
-        "/api/products/<update>/<id>",
-        "/api/products/delete/<id>",
-        "/api/products/upload",
-        "/api/products/<:id>/reviews/",
-        "/api/products/top",
-        "/api/products/<:id>/",
+class ServicesView(viewsets.ModelViewSet):
+    serializer_class = ServicesSerializer
+    queryset = Services.objects.all()
 
-    ]
-    return Response(routes)
+
+class PolicyView(viewsets.ModelViewSet):
+    serializer_class = PolicySerializer
+    queryset = Policy.objects.all()
 
 
 @api_view(['GET'])
@@ -37,9 +33,3 @@ def getProduct(request, pk):
     product = Products.objects.get(id=pk)
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
-
-
-@api_view(['GET'])
-def get_review_count(request, product_id):
-    review_count = ProductReview.object.annotate(num_reviews=Count('product_id'))
-    return Response(review_count)
