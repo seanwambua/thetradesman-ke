@@ -1,7 +1,7 @@
-        
+   
         <div class="card shadow p-1 mb-5 bg-white rounded" >	
             <h6><span class="badge bg-warning">New</span> <span class="badge bg-secondary" style="float:right">@{{product.seller}}</span></h6>
-            <div class="card-image" >                
+            <div class="card-image rounded-0 border-0" >                
                 <figure class="">
                     <img  class="rounded mx-auto d-block img-thumbnail" src="{{product.get_thumbnail}}" alt="{{product.title}}" style="width:auto">
                 </figure>
@@ -11,8 +11,8 @@
 
             <div class="card-body">
                 <p>
-                    <a class="btn btn-outline-dark" style="float:left; font-size:14px" href="{% url 'product'  product.product_category.slug product.pk %}">View {{product.product_category}}</a>
-                    <button data-product={{product.id}} data-action="add" class="btn btn-primary update-class" style="float:right; font-size:14px">Add to Cart</button>
+                    <a class="btn btn-outline-dark" style="float:left; font-size:14px" href="{% url 'product'  product.product_category.slug product.pk %}">View</a>
+                    <a href="{% url 'cart' %}" data-product={{product.id}} data-action="add" class="btn btn-primary update-class" style="float:right; font-size:14px">Add to Cart</a>
                 </p>
             </div>
             

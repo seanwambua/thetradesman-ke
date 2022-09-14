@@ -8,6 +8,10 @@ from cart.cart import Cart
 from .models import Products, Services, Category
 
 # --------------- PRODUCTS --------------------------------------------
+class ProductListView(ListView):
+    model = Products
+    context_object_name = 'products_list'
+    template_name = 'store/list.html'
 
 class ProductDetailView(DetailView):
     model = Products
@@ -21,6 +25,10 @@ class ProductDeleteView(DeleteView):
 
 
 # --------------- SERVICES --------------------------------------------
+class ServiceListView(ListView):
+    model = Services
+    context_object_name = 'services_list'
+    template_name = 'store/list.html'
 
 class ServiceDetailView(DetailView):
     model = Services

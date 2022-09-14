@@ -1,62 +1,60 @@
-<div class="col-lg-4">
-	<div class="card shadow p-4 mb-4 bg-white rounded" >
-		<div class="card-image">
-			<figure>
-				{% if product.image %}
-					<img  class="mx-auto d-block img-fluid img-thumbnail" style="width:28rem" src="{{products.thumbnail.url}}">		
-				{% endif %}
-			</figure>
-		</div>
-	</div>
-</div>
+{% extends 'core/base.html' %}
 
-<div class="col-lg-8">
-	<div class="card shadow p-4 mb-4 bg-white rounded" >
-		<div class="card-header bg-white">
-			<h4>{{ product.title}} </h4>
-		</div>
+{% block title %}
+	{{ product.title }}
+{% endblock %}
 
-		<div class="card-body">
-			<p class="mb-6">Price: Ksh. {{product.price}}</p>
-			<p class="mb-6">Summary:{{product.description}}</p>
+{% block content %}
+	<div class="flex d.flex">
+		<div class="row">
 
-			<a href="{% url 'cart_add' product.id %}">Add To Cart</a>
-			<a href="{% url 'cart_clear' %}">Clear Cart</a>
-			
-		</div>
-
-		<div class="card-footer  bg-white">
-			Merchant: <a href="product_user">{{product.seller}}</a>
-			<span style="float:right">category:<a style="float:right" href="#">{{product.category}}</a></span>
-		</div>
-	</div>
-</div>
-
-<div class="col-lg-12">
-	<div class="card shadow p-4 mb-4 bg-white rounded" >	
-		<div stye="float:right">
-			<div class="card-header">
-				<h4>Merchant Terms</h4>
+			<div class="col-lg-5">
+				<div class="card shadow border-0 p-4 mb-4 bg-white rounded" >
+					<div class="card-image">
+						<figure>
+							{% if product.image %}
+								<img  class="mx-auto d-block img-fluid img-thumbnail" style="width:28rem" src="{{products.image.url}}">		
+							{% endif %}
+						</figure>
+					</div>
+				</div>
 			</div>
-	
-			<div class="card-body">
-				<ol>
-					<li class="mb-6">Delivery Period: 1-4 days</li>
-				</ol>
-				<hr>
-				<h6 class="mb-6">Payment Terms</h6>
-				<ul>
-					<li class="mb-6">75% Upfront</li>
-					<li class="mb-6">25% On Completion</li>
-				</ul>
+
+			<div class="col-lg-4">
+				<div class="card  border-0 p-4 mb-4 bg-white rounded" >
+					<div class="card-header bg-white">
+						<h4>{{ product.title}} </h4>
+					</div>
+
+					<div class="card-body">
+						<p class="mb-6">Price: Ksh. {{product.price}}</p>
+						<p class="mb-6">Summary: {{product.description}}</p>						
+					</div>
+
+					<div class="card-footer  bg-white">
+						Seller: <a href="product_user">{{product.seller}}</a>
+					</div>
+				</div>
 			</div>
-	
-			<div class="card-footer">
-				<p>This {{product.category}} is covered by the following Tradesman Policies; </p>
-				<a href="#"> Payment Protection Policy</a><br>
-				<a href="#"> Data Protection Policy</a>
+
+			<div class="col-lg-3">
+				<div class="card  border-0 py-2 mb-4 bg-white rounded mx-auto" >
+					
+					<div class="card-body">
+						<p class="mb-6"><strong>Price: Ksh. {{product.price}}</strong></p>
+						<p class="mb-6"><strong> {{product.delivery}}</strong></p>
+
+						<a class="btn btn-outline-dark" href="{% url 'cart_add' product.id %}"> Add To Cart</a>
+						
+						
+					</div>
+
+					
+				</div>
 			</div>
-		</div>
+
+			{% include '../policy/terms.html' %}
+
+			</div>
 	</div>
-</div>
-		
+{% endblock %}

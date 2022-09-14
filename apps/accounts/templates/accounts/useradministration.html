@@ -1,13 +1,13 @@
 {% extends 'core/base.html' %}
 
-{% block title %} AccountUser Admin {% endblock %}
+{% block title %} Account Admin {% endblock %}
 
         {% block content %}
 
             <div class="flex d-flex">
                 <div class="row">
                     <div class="col-lg-4">                          
-                        {% include 'AccountUsers/parts/AccountUser_profile.html' %}
+                        {% include 'accounts/parts/profile.html' %}
  
                         <div class="card shadow p-4 mb-5 bg-white rounded" >
                             <div class="card-tite">	
@@ -34,7 +34,7 @@
                             <div class="card-tite">	
                                 <h4>Catalog:</h4>
                                 <a  class="btn btn-outline-success"  data-bs-toggle="modal" data-bs-target="#catalogUpdateModal" style="float:right" >Update Catalog</a></p>
-			                    {% include 'AccountUsers/parts/modals/catalogUpdate_modal.html' %}
+			                    {% include 'accounts/parts/modals/catalogUpdate_modal.html' %}
                             </div>
 
                             <div class="card-body">

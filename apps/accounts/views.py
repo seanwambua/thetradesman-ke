@@ -69,7 +69,7 @@ def sign_up(request):
 
 @login_required
 def user_administration(request):
-    user = request.user.account
+    user = request.user.name
     products = user.products.all()
     services = user.services.all()
     return render(request, 'accounts/useradministration.html',
@@ -93,7 +93,6 @@ def catalog_update(request):
 
 class CustomUserListView(ListView):
     model = CustomUser
-    paginate_by: 2
     context_object_name = 'accounts_list'
     template_name = 'accounts/list.html'
 

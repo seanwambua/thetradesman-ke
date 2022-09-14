@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+
+    {% block title %} Welcome | Tradesman {% endblock %}
+
+            {% block content %}
+
+            
+
+            <div class="flex d-flex">
+                <div class="row">
+                    {% if products_list.exists %}
+                        {% for product in products_list %}
+                        <div class="col-lg-auto mx-auto">
+                              {% include 'products/parts/list.html' %}
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p> Products list is not available </p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            {% endblock %}
+
+            

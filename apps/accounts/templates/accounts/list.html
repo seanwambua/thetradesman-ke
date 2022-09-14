@@ -8,8 +8,8 @@
 
             <div class="flex d-flex">
                 <div class="row">
-                    {% for AccountUser in AccountUsers %}
-                    <div class="col-lg-4">
+                    {% for account in accounts_list %}
+                    <div class="col-lg-auto mx-auto">
                           {% include 'accounts/parts/profile.html' %}
                     </div>
                     {% endfor %}
